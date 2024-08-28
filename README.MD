@@ -1,6 +1,6 @@
 # Projeto Cirio 2024 - Aplicativo de Cadastro de Participantes - Rota da Fé
 
-![Cirio 2024](https://github.com/marco0antonio0/trabalho_extensao_projeto_cirio_2023/raw/main/images_readme/image_3.png)
+![Cirio 2024](imageReadme/banner.png)
 
 ## Acesso rapido
 
@@ -11,8 +11,6 @@
 - [Acesso ao back-end](/backend/)
 
 ## Sobre o Projeto
-
-![Cirio 2024](imageReadme/banner.png)
 
 O **Projeto Cirio Rota da Fé** é uma emocionante iniciativa acadêmica de extensão realizada pelo Grupo UNAMA, que visa
 facilitar o processo de cadastramento de participantes para o tradicional evento do Cirio. Para tornar essa experiência
