@@ -4,7 +4,7 @@
 
 ## Acesso rapido
 
-- [Como conttribuir o projeto](#passos-para-contribuir-com-o-projeto)
+- [Como contribuir o projeto](#passos-para-contribuir-com-o-projeto)
 - [Acesso ao Docs](/docs/)
 - [Acesso ao Desing](/desing/)
 - [Acesso ao front-end](/frontend/)
