@@ -58,7 +58,7 @@ especial para todos os participantes. Vamos fazer parte dessa história!
 Este comando ira copia de o projeto no main.
 
 ```sh
-git clone https://github.com/marco0antonio0/trabalho_extensao_projeto_cirio_2024
+git clone git@github.com:RotaDaFe/trabalho_extensao_projeto_cirio_2024.git
 ```
 
 ### 2. Inicie uma branch task issue
@@ -80,13 +80,13 @@ git branch
 
 O retorno deste comando deve ser issue-<'numero-da-sua-issue'>
 
-    **Divirta-se cadastrando e compartilhando momentos inesquecíveis no Cirio 2024!**
+**Divirta-se cadastrando e compartilhando momentos inesquecíveis no Cirio 2024!**
 
-    ## Orientador
+## Orientador
 
-    - [@Erminio Augusto Ramos da Paixao](http://lattes.cnpq.br/3441462516404507)
+- [@Erminio Augusto Ramos da Paixao](http://lattes.cnpq.br/3441462516404507)
 
-    ## Colaboradores Universitarios
+## Colaboradores Universitarios
 
 <h3>Fullstack</h3>
 <table>
@@ -104,11 +104,11 @@ O retorno deste comando deve ser issue-<'numero-da-sua-issue'>
     <tr>
         <td align="center">
             <img src="https://static-00.iconduck.com/assets.00/github-emoji-2048x2021-w2ge0ghn.png" width="100"
-                alt="Mathias"><br>
-            <a href="#">@Mathias</a>
+                alt=""><br>
+            <a href="#">@Mateus</a>
         </td>
         <td align="center">
-            <img src="https://github.com/FelipeMourah.png?size=100px" width="100" alt="Felipe"><br>
+            <img src="https://github.com/FelipeMourah.png?size=100px" width="100" alt=""><br>
             <a href="https://github.com/FelipeMourah">@Felipe</a>
         </td>
         <td align="center">
@@ -117,17 +117,17 @@ O retorno deste comando deve ser issue-<'numero-da-sua-issue'>
             <a href="#">@Iago</a>
         </td>
         <td align="center">
-            <img src="https://github.com/MatheusBarbosaDeAndrade.png" width="100" alt="Mateus"><br>
-            <a href="https://github.com/MatheusBarbosaDeAndrade">@Mateus</a>
+            <img src="https://github.com/MatheusBarbosaDeAndrade.png" width="100" alt=""><br>
+            <a href="https://github.com/MatheusBarbosaDeAndrade">@Matheus Barbosa</a>
         </td>
         <td align="center">
             <img src="https://static-00.iconduck.com/assets.00/github-emoji-2048x2021-w2ge0ghn.png" width="100"
-                alt="Jackeline"><br>
+                alt=""><br>
             <a href="#">@Jackeline</a>
         </td>
         <td align="center">
             <img src="https://static-00.iconduck.com/assets.00/github-emoji-2048x2021-w2ge0ghn.png" width="100"
-                alt="Tales"><br>
+                alt=""><br>
             <a href="#">@Tales</a>
         </td>
     </tr>
@@ -139,22 +139,22 @@ O retorno deste comando deve ser issue-<'numero-da-sua-issue'>
     <tr>
         <td align="center">
             <img src="https://static-00.iconduck.com/assets.00/github-emoji-2048x2021-w2ge0ghn.png" width="100"
-                alt="Pedro Gabriel Raiol Frade"><br>
+                alt=""><br>
             <a href="#">@Pedro Gabriel Raiol Frade</a>
         </td>
         <td align="center">
             <img src="https://static-00.iconduck.com/assets.00/github-emoji-2048x2021-w2ge0ghn.png" width="100"
-                alt="Gabriel Henrique Pinheiro Maia"><br>
+                alt=""><br>
             <a href="#">@Gabriel Henrique Pinheiro Maia</a>
         </td>
         <td align="center">
             <img src="https://static-00.iconduck.com/assets.00/github-emoji-2048x2021-w2ge0ghn.png" width="100"
-                alt="Arthemyo Rodrigues"><br>
+                alt=""><br>
             <a href="#">@Arthemyo Rodrigues</a>
         </td>
         <td align="center">
             <img src="https://static-00.iconduck.com/assets.00/github-emoji-2048x2021-w2ge0ghn.png" width="100"
-                alt="Paulo Eduardo Melo Pereira"><br>
+                alt=""><br>
             <a href="#">@Paulo Eduardo Melo Pereira</a>
         </td>
     </tr>
@@ -166,48 +166,24 @@ O retorno deste comando deve ser issue-<'numero-da-sua-issue'>
     <tr>
         <td align="center">
             <img src="https://static-00.iconduck.com/assets.00/github-emoji-2048x2021-w2ge0ghn.png" width="100"
-                alt="Pedro Gabriel Raiol Frade"><br>
+                alt=""><br>
             <a href="#">@salomão trindade</a>
         </td>
         <td align="center">
-            <img src="https://static-00.iconduck.com/assets.00/github-emoji-2048x2021-w2ge0ghn.png" width="100"
-                alt="Gabriel Henrique Pinheiro Maia"><br>
+            <img src="https://github.com/AlexsandroFernandesNascimento.png?size=100px" width="100"
+                alt=""><br>
             <a href="#">@Alexsandro Fernandes</a>
         </td>
         <td align="center">
             <img src="https://static-00.iconduck.com/assets.00/github-emoji-2048x2021-w2ge0ghn.png" width="100"
-                alt="Arthemyo Rodrigues"><br>
+                alt=""><br>
             <a href="#">@Iago Weycker</a>
         </td>
         <td align="center">
-            <img src="https://static-00.iconduck.com/assets.00/github-emoji-2048x2021-w2ge0ghn.png" width="100"
-                alt="Paulo Eduardo Melo Pereira"><br>
+            <img src="https://github.com/melizerocha.png?size=100px" width="100"
+                alt=""><br>
             <a href="#">@Melize Rocha</a>
         </td>
     </tr>
 </table>
 
-
-
-### Frontend
-
-- [@Mathias]()
-- [@Felipe](https://github.com/FelipeMourah)
-- [@Iago]()
-- [@Mateus](https://github.com/MatheusBarbosaDeAndrade)
-- [@Jackeline]()
-- [@Tales]()
-
-### Backend
-
-- [@Pedro Gabriel Raiol Frade]()
-- [@Gabriel Henrique Pinheiro Maia]()
-- [@Arthemyo Rodrigues]()
-- [@Paulo Eduardo Melo Pereira]()
-
-### Design e documentação
-
-- [@salomão trindade]()
-- [@Alexsandro Fernandes Nascimento](https://github.com/AlexsandroFernandesNascimento)
-- [@Iago Weycker Viana Oliveira]()
-- [@Melize Rocha](https://github.com/melizerocha)
