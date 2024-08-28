@@ -12,9 +12,9 @@
 
 ## Sobre o Projeto
 
-![Cirio 2024](https://github.com/marco0antonio0/trabalho_extensao_projeto_cirio_2023/raw/main/images_readme/image_2.png)
+![Cirio 2024](imageReadme/banner.png)
 
-O **Projeto Cirio 2024** é uma emocionante iniciativa acadêmica de extensão realizada pelo Grupo UNAMA, que visa
+O **Projeto Cirio Rota da Fé** é uma emocionante iniciativa acadêmica de extensão realizada pelo Grupo UNAMA, que visa
 facilitar o processo de cadastramento de participantes para o tradicional evento do Cirio. Para tornar essa experiência
 mais acessível e eficiente, desenvolvemos um aplicativo Android utilizando o framework Flutter, com a linguagem Dart, e
 um banco de dados SQLite para operações offline.
