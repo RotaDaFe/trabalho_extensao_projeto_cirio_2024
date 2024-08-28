@@ -10,12 +10,14 @@
 - [Acesso ao front-end](/frontend/)
 - [Acesso ao back-end](/backend/)
 
-## Sobre o Projeto
 
-O **Projeto Cirio Rota da Fé** é uma emocionante iniciativa acadêmica de extensão realizada pelo Grupo UNAMA, que visa
-facilitar o processo de cadastramento de participantes para o tradicional evento do Cirio. Para tornar essa experiência
-mais acessível e eficiente, desenvolvemos um aplicativo Android utilizando o framework Flutter, com a linguagem Dart, e
-um banco de dados SQLite para operações offline.
+## 🚀 Nossas Iniciativas
+
+### 📅 Projeto Cirio Rota da Fé 2024
+
+O **Projeto Cirio Rota da Fé 2024** é nossa mais recente empreitada. Este projeto acadêmico de extensão, em parceria com o Grupo UNAMA, busca modernizar e simplificar o processo de cadastramento de participantes do Círio. Desenvolvemos um aplicativo Android que oferece uma experiência intuitiva e eficiente, com suporte para operações offline. Estamos comprometidos em tornar a experiência de fé mais acessível aa todos.
+
+- **Tecnologias utilizadas**: Flutter, Dart, Node.js, NestJS, SQLite
 
 ## Funcionalidades Principais
 
@@ -101,7 +103,7 @@ O retorno deste comando deve ser issue-<'numero-da-sua-issue'>
 <table>
     <tr>
         <td align="center">
-            <img src="https://static-00.iconduck.com/assets.00/github-emoji-2048x2021-w2ge0ghn.png" width="100"
+            <img src="https://github.com/MaWickd.png?size=100px" width="100"
                 alt=""><br>
             <a href="#">@Mateus</a>
         </td>
@@ -119,14 +121,19 @@ O retorno deste comando deve ser issue-<'numero-da-sua-issue'>
             <a href="https://github.com/MatheusBarbosaDeAndrade">@Matheus Barbosa</a>
         </td>
         <td align="center">
-            <img src="https://static-00.iconduck.com/assets.00/github-emoji-2048x2021-w2ge0ghn.png" width="100"
+            <img src="https://github.com/Morceline.png" width="100"
                 alt=""><br>
-            <a href="#">@Jackeline</a>
+            <a href="https://github.com/Morceline">@Jackeline</a>
         </td>
         <td align="center">
             <img src="https://static-00.iconduck.com/assets.00/github-emoji-2048x2021-w2ge0ghn.png" width="100"
                 alt=""><br>
             <a href="#">@Tales</a>
+        </td>
+        <td align="center">
+            <img src="https://github.com/AlexsandroFernandesNascimento.png?size=100px" width="100"
+                alt=""><br>
+            <a href="https://github.com/AlexsandroFernandesNascimento">@Alexsandro Fernandes</a>
         </td>
     </tr>
 </table>
@@ -141,19 +148,19 @@ O retorno deste comando deve ser issue-<'numero-da-sua-issue'>
             <a href="#">@Pedro Gabriel Raiol Frade</a>
         </td>
         <td align="center">
-            <img src="https://static-00.iconduck.com/assets.00/github-emoji-2048x2021-w2ge0ghn.png" width="100"
+            <img src="https://github.com/gabrielhpmaia.png?size=100px" width="100"
                 alt=""><br>
-            <a href="#">@Gabriel Henrique Pinheiro Maia</a>
+            <a href="https://github.com/gabrielhpmaia">@Gabriel Henrique Pinheiro Maia</a>
         </td>
         <td align="center">
-            <img src="https://static-00.iconduck.com/assets.00/github-emoji-2048x2021-w2ge0ghn.png" width="100"
+            <img src="https://github.com/Arthemyo.png?size=100px" width="100"
                 alt=""><br>
-            <a href="#">@Arthemyo Rodrigues</a>
+            <a href="https://github.com/Arthemyo">@Arthemyo Rodrigues</a>
         </td>
         <td align="center">
-            <img src="https://static-00.iconduck.com/assets.00/github-emoji-2048x2021-w2ge0ghn.png" width="100"
+            <img src="https://github.com/meloeduardo.png?size=100px" width="100"
                 alt=""><br>
-            <a href="#">@Paulo Eduardo Melo Pereira</a>
+            <a href="https://github.com/meloeduardo">@Paulo Eduardo Melo Pereira</a>
         </td>
     </tr>
 </table>
@@ -168,11 +175,6 @@ O retorno deste comando deve ser issue-<'numero-da-sua-issue'>
             <a href="#">@salomão trindade</a>
         </td>
         <td align="center">
-            <img src="https://github.com/AlexsandroFernandesNascimento.png?size=100px" width="100"
-                alt=""><br>
-            <a href="#">@Alexsandro Fernandes</a>
-        </td>
-        <td align="center">
             <img src="https://static-00.iconduck.com/assets.00/github-emoji-2048x2021-w2ge0ghn.png" width="100"
                 alt=""><br>
             <a href="#">@Iago Weycker</a>
@@ -180,7 +182,7 @@ O retorno deste comando deve ser issue-<'numero-da-sua-issue'>
         <td align="center">
             <img src="https://github.com/melizerocha.png?size=100px" width="100"
                 alt=""><br>
-            <a href="#">@Melize Rocha</a>
+            <a href="https://github.com/melizerocha">@Melize Rocha</a>
         </td>
     </tr>
 </table>
