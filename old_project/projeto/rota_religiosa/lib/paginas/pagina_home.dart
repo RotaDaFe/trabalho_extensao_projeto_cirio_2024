@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rota_religiosa/components/widget_display.dart';
 import 'package:rota_religiosa/components/widget_menu.dart';
-import 'package:rota_religiosa/components/widget_titulo.dart';
 import 'package:rota_religiosa/components/widget_topbar.dart';
 import 'package:rota_religiosa/controller/router_settings.dart';
 import 'package:rota_religiosa/paginas/pagina_mensagem_sis_confirm.dart';
@@ -19,7 +17,7 @@ class _PaginoHomeState extends State<PaginoHome> {
     double alturaTela = MediaQuery.of(context).size.height;
 
     return Container(
-      color: const Color.fromARGB(255, 237, 182, 55),
+      color: Color(0xFFECCB83),
       child: SafeArea(
         child: WillPopScope(
           onWillPop: () async {
@@ -45,18 +43,28 @@ class _PaginoHomeState extends State<PaginoHome> {
                             children: [
                               SizedBox(
                                   height: alturaTela > 750
-                                      ? 40
+                                      ? 0
                                       : alturaTela > 710
-                                          ? 30
+                                          ? 50
                                           : 10),
                               // =============================================
-                              WidgetTitulo(
-                                titulo: 'INICIO',
-                                height: 70,
+                              Positioned.fill(
+                                child: ColorFiltered(
+                                  colorFilter: ColorFilter.mode(
+                                    Colors.black.withOpacity(
+                                        0.5), // Aplica uma cor preta com 50% de opacidade
+                                    BlendMode
+                                        .darken, // Modo de mesclagem para escurecer
+                                  ),
+                                  child: Image.asset(
+                                    'assets/image 33.png', // Substitua pelo caminho correto
+                                  ),
+                                ),
                               ),
+                     
+
                               //==============================================
                               const Widgetmenu(),
-                              const widgetDisplay(),
                             ],
                           )))),
 

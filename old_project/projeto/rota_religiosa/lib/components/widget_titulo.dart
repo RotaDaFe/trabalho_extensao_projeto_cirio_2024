@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 //===========================
 //widget para titulos
@@ -9,6 +10,7 @@ class WidgetTitulo extends StatelessWidget {
   double height;
   String titulo;
   WidgetTitulo({super.key, this.titulo = '', this.height = 100});
+  
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +24,6 @@ class WidgetTitulo extends StatelessWidget {
         //=========================
         //Sugestão: colocar 'const' antes de 'TextStyle()'
         //=========================
-        style: const TextStyle(
-            fontSize: 25, color: Color(0xffBE904C), fontFamily: 'Inter-medium'),
       ),
     );
   }
