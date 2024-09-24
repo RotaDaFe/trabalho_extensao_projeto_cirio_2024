@@ -79,6 +79,13 @@ flutter:
     - assets/icons/icon_next.png
     - assets/appsplashImage.png
     - assets/icons/icon_unama.png
+    - assets/icons/Group-1.png
+    - assets/icons/Group.png
+    - assets/icons/Vector-1.png
+    - assets/icons/Vector-2.png
+    - assets/icons/Vector.png
+    - assets/image 33.png
+    
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

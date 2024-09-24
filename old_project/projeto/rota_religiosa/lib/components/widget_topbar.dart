@@ -55,7 +55,7 @@ class Widgettopbar extends StatelessWidget {
             alignment: Alignment.center,
             width: MediaQuery.of(context).size.width * 0.4,
             child: const Text(
-              'Círio 2023',
+              'Círio 2024',
               style: TextStyle(
                   fontFamily: 'Inter',
                   color: Color(0xffF4F4F2),
