@@ -1,8 +1,8 @@
 import 'package:rota_religiosa/controller/router_settings.dart';
-import 'package:rota_religiosa/paginas/pagina_cadastro.dart';
-import 'package:rota_religiosa/paginas/pagina_config.dart';
-import 'package:rota_religiosa/paginas/pagina_consulta.dart';
-import 'package:rota_religiosa/paginas/pagina_mensagem_sis_suporte.dart';
+import 'package:rota_religiosa/pages/pagina_cadastro.dart';
+import 'package:rota_religiosa/pages/pagina_config.dart';
+import 'package:rota_religiosa/pages/pagina_consulta.dart';
+import 'package:rota_religiosa/pages/pagina_mensagem_sis_suporte.dart';
 import 'package:flutter/material.dart';
 
 //=======================================
@@ -27,15 +27,15 @@ class Widgetmenu extends StatelessWidget {
               children: [
                 //Total de Cadastros
                 const SizedBox(height: 15),
-                
-                Stack(
 
-                    children: [
+                Stack(
+                  children: [
                     // Imagem com filtro
                     Positioned.fill(
                       child: ColorFiltered(
                         colorFilter: ColorFilter.mode(
-                          Colors.black.withOpacity(0.5), // Aplica uma cor preta com 50% de opacidade
+                          Colors.black.withOpacity(
+                              0.5), // Aplica uma cor preta com 50% de opacidade
                           BlendMode.darken, // Modo de mesclagem para escurecer
                         ),
                         child: Image.asset(
@@ -158,19 +158,17 @@ class BtnsMenu extends StatelessWidget {
                     color: Colors.white,
                     size: 50,
                   ),
-                  
                 ),
-                
               ),
               const SizedBox(width: 10),
-                Text(
-                  titulo,
-                  style: const TextStyle(
-                    fontFamily: 'Inter',
-                    color: Colors.black,
-                    fontSize: 16,
-                  ),
-                )
+              Text(
+                titulo,
+                style: const TextStyle(
+                  fontFamily: 'Inter',
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              )
             ],
           ),
         ),
