@@ -1,6 +1,6 @@
 import 'package:rota_religiosa/controller/router_settings.dart';
 import 'package:rota_religiosa/model/database.dart';
-import 'package:rota_religiosa/paginas/pagina_updateCad.dart';
+import 'package:rota_religiosa/pages/pagina_updateCad.dart';
 import 'package:flutter/material.dart';
 
 class ColunaDeCadastrados extends StatefulWidget {
