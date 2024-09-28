@@ -60,7 +60,6 @@ class _PageInicioState extends State<PageInicio> {
                     } else {
                       // Exibe o número de usuários cadastrados
                       return walpaperBackground(
-                        width: largura,
                         image: "images/banner1.png",
                         child: bannerIndicator(
                           text: snapshot.data.toString(), // Número de usuários
