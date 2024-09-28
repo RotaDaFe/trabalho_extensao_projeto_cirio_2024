@@ -40,7 +40,7 @@ Future<int> exportDatabase({required SqfliteHelper dbHelper}) async {
       "romeiros": dataQuery,
       "password": user[0]['senha']
     };
-    var url = Uri.parse('http://192.168.1.36:3000/api/romeiros');
+    var url = Uri.parse('https://api-cirio-2024.netlify.app/api/romeiros');
     // var body = json.encode({'usuarios': users});
     print(bodyRequest);
     var response = await http.post(
