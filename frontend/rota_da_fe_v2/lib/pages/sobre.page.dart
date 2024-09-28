@@ -13,13 +13,17 @@ Orientador
 FullStack
 - Marco Antonio da Silva Mesquita
 
+Design
+- Alexsandro Fernandes Nascimento
+- Beatriz Silva da Rocha Lisboa
+
 Frontend
-- Mathias 
-- Felipe 
-- Iago 
-- Mateus 
-- Jackeline 
-- Tales 
+- Matheus Barbosa de Andrade
+- Felipe Santos de Moura 
+- Iago Dantas Zorrilla e Silva 
+- Mateus da Cunha Nunes 
+- Jackeline Pereira Domingues
+- Tales Freire Rodrigues da Costa
 
 Backend
 - Pedro Gabriel Raiol Frade 
@@ -27,11 +31,12 @@ Backend
 - Arthemyo Rodrigues 
 - Paulo Eduardo Melo Pereira 
 
-Design e documentação
-- salomão trindade moraes 
-- Alexsandro Fernandes Nascimento 
+Documentação
+- salomão trindade moraes  
 - Iago Weycker Viana Oliveira 
-- Melize Rocha 
+- Melize Rocha
+- Douglas Ronan Mendes de Oliveira
+
 """;
 
 class PageSobreApp extends StatelessWidget {

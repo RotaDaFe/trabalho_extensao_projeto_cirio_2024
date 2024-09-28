@@ -46,7 +46,7 @@ Widget componentIdentificador({width, margem, email, bloco}) {
                 width: 100,
                 decoration: BoxDecoration(
                     image: const DecorationImage(
-                        image: AssetImage("images/iconSantinhaV2.png"),
+                        image: AssetImage("images/iconAccountSantinhaa.png"),
                         fit: BoxFit.fitHeight),
                     borderRadius: BorderRadius.circular(20)))),
         const SizedBox(width: 10)

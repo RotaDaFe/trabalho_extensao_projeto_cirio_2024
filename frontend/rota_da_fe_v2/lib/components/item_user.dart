@@ -41,7 +41,7 @@ Widget itemUser(
               padding: const EdgeInsets.all(2),
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("images/imageIlustator.png"),
+                  image: AssetImage("images/iconAccount.png"),
                 ),
               ),
             ),

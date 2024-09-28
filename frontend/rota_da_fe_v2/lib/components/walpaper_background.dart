@@ -11,7 +11,7 @@ Widget walpaperBackground(
           decoration: BoxDecoration(
               image: DecorationImage(
                   image: AssetImage(image),
-                  fit: width > 400 ? BoxFit.fitWidth : BoxFit.fitHeight))),
+                  fit: width > 450 ? BoxFit.fitWidth : BoxFit.fitHeight))),
       child
     ]),
   );
