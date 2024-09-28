@@ -234,7 +234,7 @@ class _PageEditarCadastroRomeiroState extends State<PageEditarCadastroRomeiro> {
                       height: 80.0),
                   Center(
                     child: SizedBox(
-                      width: largura - margem,
+                      width: largura > 400 ? 400 - 50 : (largura - margem),
                       child: Column(children: [
                         const SizedBox(height: 30),
                         const Center(

@@ -67,6 +67,7 @@ class _PageMostraCadastrosState extends State<PageMostraCadastros> {
             Expanded(
               child: usuariosApp.isNotEmpty
                   ? Container(
+                      width: largura > 400.0 ? 400 - 50 : (largura - margem),
                       padding: const EdgeInsets.symmetric(horizontal: 50),
                       child: CustomScrollView(
                         slivers: [

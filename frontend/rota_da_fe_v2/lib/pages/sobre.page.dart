@@ -55,7 +55,7 @@ class PageSobreApp extends StatelessWidget {
                 height: 80.0),
             Center(
               child: SizedBox(
-                width: largura - margem,
+                width: largura > 400 ? 400 - 50 : (largura - margem),
                 child: Column(children: [
                   SizedBox(
                     width: largura - margem,

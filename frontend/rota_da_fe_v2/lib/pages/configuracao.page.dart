@@ -136,7 +136,7 @@ class _PageConfiguracaoState extends State<PageConfiguracao> {
               ),
               Center(
                 child: SizedBox(
-                  width: largura - margem,
+                  width: largura > 400 ? 400 - 50 : (largura - margem),
                   child: Column(
                     children: [
                       const SizedBox(height: 30),
