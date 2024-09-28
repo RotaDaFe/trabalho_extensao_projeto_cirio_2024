@@ -33,108 +33,112 @@ class _PageInicioState extends State<PageInicio> {
     double largura = MediaQuery.of(context).size.width;
     double margem = 100.0;
 
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              header(
-                onTap: () {
-                  // navigateAndRemoveUntil(context, PageInicio());
-                },
-                height: 80.0,
-              ),
-              // Usar FutureBuilder para buscar e exibir o número de usuários cadastrados
-              FutureBuilder<int>(
-                future: _getUserCount(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    // Exibe um indicador de carregamento enquanto os dados estão sendo buscados
-                    return const Center(child: CircularProgressIndicator());
-                  } else if (snapshot.hasError) {
-                    // Se houver erro, exibe uma mensagem
-                    return const Center(child: Text('Erro ao carregar dados.'));
-                  } else {
-                    // Exibe o número de usuários cadastrados
-                    return walpaperBackground(
-                      width: largura,
-                      image: "images/banner1.png",
-                      child: bannerIndicator(
-                        text: snapshot.data.toString(), // Número de usuários
-                        width:
-                            largura > 400.0 ? 400.0 - 50 : (largura - margem),
-                      ),
-                    );
-                  }
-                },
-              ),
-              Center(
-                child: SizedBox(
-                  width: largura > 400 ? 400 - 50 : (largura - margem),
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 10),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: butttonDropdow(
-                          width: largura - margem,
-                          ontap: () {
-                            Navigator.of(context).push(SlideTransitionPage(
-                                page: const PageCadastroRomeiro()));
-                          },
-                          text: "Cadastrar participantes",
-                          textSub: "Clique e saiba mais",
-                          icon: Icons.group_add,
+    return Container(
+      color: Color(0xffEDB637).withOpacity(.58),
+      child: SafeArea(
+        child: Scaffold(
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                header(
+                  onTap: () {
+                    // navigateAndRemoveUntil(context, PageInicio());
+                  },
+                  height: 80.0,
+                ),
+                // Usar FutureBuilder para buscar e exibir o número de usuários cadastrados
+                FutureBuilder<int>(
+                  future: _getUserCount(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      // Exibe um indicador de carregamento enquanto os dados estão sendo buscados
+                      return const Center(child: CircularProgressIndicator());
+                    } else if (snapshot.hasError) {
+                      // Se houver erro, exibe uma mensagem
+                      return const Center(
+                          child: Text('Erro ao carregar dados.'));
+                    } else {
+                      // Exibe o número de usuários cadastrados
+                      return walpaperBackground(
+                        width: largura,
+                        image: "images/banner1.png",
+                        child: bannerIndicator(
+                          text: snapshot.data.toString(), // Número de usuários
+                          width:
+                              largura > 400.0 ? 400.0 - 50 : (largura - margem),
                         ),
-                      ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: butttonDropdow(
-                          width: largura - 100,
-                          ontap: () {
-                            Navigator.of(context).push(SlideTransitionPage(
-                                page: const PageMostraCadastros()));
-                          },
-                          text: "Visualizar cadastros",
-                          textSub: "Clique e saiba mais",
-                          icon: Icons.dashboard,
+                      );
+                    }
+                  },
+                ),
+                Center(
+                  child: SizedBox(
+                    width: largura > 400 ? 400 - 50 : (largura - margem),
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 10),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: butttonDropdow(
+                            width: largura - margem,
+                            ontap: () {
+                              Navigator.of(context).push(SlideTransitionPage(
+                                  page: const PageCadastroRomeiro()));
+                            },
+                            text: "Cadastrar participantes",
+                            textSub: "Clique e saiba mais",
+                            icon: Icons.group_add,
+                          ),
                         ),
-                      ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: butttonDropdow(
-                          width: largura - 100,
-                          ontap: () {
-                            Navigator.of(context).push(SlideTransitionPage(
-                                page: const PageSobreApp()));
-                          },
-                          text: "Sobre o app",
-                          textSub: "Clique e saiba mais",
-                          icon: Icons.view_timeline,
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: butttonDropdow(
+                            width: largura - 100,
+                            ontap: () {
+                              Navigator.of(context).push(SlideTransitionPage(
+                                  page: const PageMostraCadastros()));
+                            },
+                            text: "Visualizar cadastros",
+                            textSub: "Clique e saiba mais",
+                            icon: Icons.dashboard,
+                          ),
                         ),
-                      ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: butttonDropdow(
-                          width: largura - 100,
-                          ontap: () {
-                            Navigator.of(context).push(SlideTransitionPage(
-                                page: const PageConfiguracao()));
-                          },
-                          text: "Configuração",
-                          textSub: "Clique e saiba mais",
-                          icon: Icons.settings,
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: butttonDropdow(
+                            width: largura - 100,
+                            ontap: () {
+                              Navigator.of(context).push(SlideTransitionPage(
+                                  page: const PageSobreApp()));
+                            },
+                            text: "Sobre o app",
+                            textSub: "Clique e saiba mais",
+                            icon: Icons.view_timeline,
+                          ),
                         ),
-                      ),
-                    ],
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: butttonDropdow(
+                            width: largura - 100,
+                            ontap: () {
+                              Navigator.of(context).push(SlideTransitionPage(
+                                  page: const PageConfiguracao()));
+                            },
+                            text: "Configuração",
+                            textSub: "Clique e saiba mais",
+                            icon: Icons.settings,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 30),
-              sectionLogoExtensao(),
-              const SizedBox(height: 15),
-              const SizedBox(height: 100),
-            ],
+                const SizedBox(height: 30),
+                sectionLogoExtensao(),
+                const SizedBox(height: 15),
+                const SizedBox(height: 100),
+              ],
+            ),
           ),
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quickalert/quickalert.dart';
 import 'package:rota_da_fe_v2/components/build_textfield.dart';
 import 'package:rota_da_fe_v2/components/button_type_a.dart';
 import 'package:rota_da_fe_v2/components/header.dart';
@@ -7,6 +8,7 @@ import 'package:rota_da_fe_v2/effects/slide_transition_page_remove.dart';
 import 'package:rota_da_fe_v2/messageAlerts/alerts.dart';
 import 'package:rota_da_fe_v2/components/build_dropdown.dart';
 import 'package:rota_da_fe_v2/pages/inicio.page.dart';
+import 'package:rota_da_fe_v2/services/romeiro/delete_one_romeiro.dart';
 import 'package:rota_da_fe_v2/services/romeiro/get_one_romeiro.dart';
 import 'package:rota_da_fe_v2/services/romeiro/update_romeiro.dart';
 
@@ -182,10 +184,6 @@ class _PageEditarCadastroRomeiroState extends State<PageEditarCadastroRomeiro> {
   TextEditingController dropdownControllerCidade = TextEditingController();
   TextEditingController dropdownControllerSexo = TextEditingController();
 
-  String? selectedCity;
-  String? selectedLocation;
-  String? gender;
-
   @override
   void initState() {
     super.initState();
@@ -213,111 +211,158 @@ class _PageEditarCadastroRomeiroState extends State<PageEditarCadastroRomeiro> {
     });
   }
 
+  // Função para mostrar o QuickAlert de confirmação
+  Future<void> _showDeleteConfirmation(BuildContext context) async {
+    QuickAlert.show(
+      context: context,
+      type: QuickAlertType.confirm,
+      title: 'Confirmar exclusão',
+      text: 'Tem certeza que deseja deletar este romeiro?',
+      confirmBtnText: 'Sim',
+      cancelBtnText: 'Não',
+      onConfirmBtnTap: () async {
+        // Deleta o romeiro
+        await deleteRomeiro(dbHelper: dbHelper, id: widget.userId);
+        Navigator.pop(context); // Fechar o QuickAlert
+        navigateAndRemoveUntil(context, const PageInicio()); // Navegar de volta
+      },
+      onCancelBtnTap: () {
+        Navigator.pop(context); // Fechar o QuickAlert se o usuário cancelar
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     double largura = MediaQuery.of(context).size.width;
     double margem = 100.0;
 
-    return SafeArea(
-        child: Scaffold(
-      body: isLoading
-          ? const Center(
-              child:
-                  CircularProgressIndicator()) // Mostra o indicador de carregamento
-          : SingleChildScrollView(
-              child: Column(
-                children: [
-                  header(
-                      onTap: () {
-                        navigateAndRemoveUntil(context, const PageInicio());
-                      },
-                      height: 80.0),
-                  Center(
-                    child: SizedBox(
-                      width: largura > 400 ? 400 - 50 : (largura - margem),
-                      child: Column(children: [
-                        const SizedBox(height: 30),
-                        const Center(
-                            child: Text("EDITAR CADASTRO",
+    return Container(
+      color: Color(0xffEDB637).withOpacity(.58),
+      child: SafeArea(
+          child: Scaffold(
+        body: isLoading
+            ? const Center(
+                child:
+                    CircularProgressIndicator()) // Mostra o indicador de carregamento
+            : SingleChildScrollView(
+                child: Column(
+                  children: [
+                    header(
+                        onTap: () {
+                          navigateAndRemoveUntil(context, const PageInicio());
+                        },
+                        height: 80.0),
+                    Center(
+                      child: SizedBox(
+                        width: largura > 400 ? 400 - 50 : (largura - margem),
+                        child: Column(
+                          children: [
+                            const SizedBox(height: 30),
+                            const Center(
+                              child: Text(
+                                "EDITAR CADASTRO",
                                 style: TextStyle(
                                     fontSize: 25,
                                     fontWeight: FontWeight.bold,
-                                    color: Color(0xff427443)))),
-                        const SizedBox(height: 15),
-                        buildTextField(
-                            keyboardType: TextInputType.name,
-                            label: "Nome",
-                            controller: controllerNome,
-                            width: largura),
-                        buildTextField(
-                            keyboardType: const TextInputType.numberWithOptions(
-                                decimal: false, signed: false),
-                            label: "Idade",
-                            isNumber: true,
-                            controller: controllerIdade,
-                            width: largura),
-                        buildDropdownButton(
-                            label: "Cidade",
-                            items: cidades, // Lista de opções
-                            controller: dropdownControllerCidade,
-                            initialValue:
-                                dropdownControllerCidade.text.isNotEmpty
-                                    ? dropdownControllerCidade.text
-                                    : "Selecione",
-                            width: largura),
-                        buildDropdownButton(
-                            label: "Sexo",
-                            items: sexo, // Lista de opções
-                            controller: dropdownControllerSexo,
-                            initialValue: dropdownControllerSexo.text.isNotEmpty
-                                ? dropdownControllerSexo.text
-                                : "Selecione",
-                            width: largura),
-                        buildDropdownButton(
-                            label: "Local de atendimento",
-                            items: locaDeAtendimento, // Lista de opções
-                            controller: dropdownControllerLocalDeAtendimento,
-                            initialValue: dropdownControllerLocalDeAtendimento
-                                    .text.isNotEmpty
-                                ? dropdownControllerLocalDeAtendimento.text
-                                : "Selecione",
-                            width: largura),
-                        const SizedBox(height: 20),
-                        buttonTypeA(
-                            text: "Atualizar",
-                            ontap: () async {
-                              if (controllerNome.text.isNotEmpty &&
-                                  controllerIdade.text.isNotEmpty &&
-                                  dropdownControllerCidade.text !=
-                                      'Selecione' &&
-                                  dropdownControllerLocalDeAtendimento.text !=
-                                      'Selecione' &&
-                                  dropdownControllerSexo.text != 'Selecione') {
-                                alertSucess(context);
-                                await updateRomeiro(
-                                  id: id,
-                                  dbHelper: dbHelper,
-                                  nome: controllerNome.text,
-                                  idade: int.parse(controllerIdade.text),
-                                  cidade: dropdownControllerCidade.text,
-                                  localDeAtendimento:
-                                      dropdownControllerLocalDeAtendimento.text,
-                                  genero: dropdownControllerSexo.text,
-                                );
-                                // ignore: use_build_context_synchronously
-                                navigateAndRemoveUntil(
-                                    context, const PageInicio());
-                              } else {
-                                alertFailField(context);
-                              }
-                            })
-                      ]),
+                                    color: Color(0xff427443)),
+                              ),
+                            ),
+                            const SizedBox(height: 15),
+                            buildTextField(
+                                keyboardType: TextInputType.name,
+                                label: "Nome",
+                                controller: controllerNome,
+                                width: largura),
+                            buildTextField(
+                                keyboardType:
+                                    const TextInputType.numberWithOptions(
+                                        decimal: false, signed: false),
+                                label: "Idade",
+                                isNumber: true,
+                                controller: controllerIdade,
+                                width: largura),
+                            buildDropdownButton(
+                                label: "Cidade",
+                                items: cidades, // Lista de opções
+                                controller: dropdownControllerCidade,
+                                initialValue:
+                                    dropdownControllerCidade.text.isNotEmpty
+                                        ? dropdownControllerCidade.text
+                                        : "Selecione",
+                                width: largura),
+                            buildDropdownButton(
+                                label: "Sexo",
+                                items: sexo, // Lista de opções
+                                controller: dropdownControllerSexo,
+                                initialValue:
+                                    dropdownControllerSexo.text.isNotEmpty
+                                        ? dropdownControllerSexo.text
+                                        : "Selecione",
+                                width: largura),
+                            buildDropdownButton(
+                                label: "Local de atendimento",
+                                items: locaDeAtendimento, // Lista de opções
+                                controller:
+                                    dropdownControllerLocalDeAtendimento,
+                                initialValue:
+                                    dropdownControllerLocalDeAtendimento
+                                            .text.isNotEmpty
+                                        ? dropdownControllerLocalDeAtendimento
+                                            .text
+                                        : "Selecione",
+                                width: largura),
+                            const SizedBox(height: 20),
+                            buttonTypeA(
+                                text: "Atualizar",
+                                ontap: () async {
+                                  if (controllerNome.text.isNotEmpty &&
+                                      controllerIdade.text.isNotEmpty &&
+                                      dropdownControllerCidade.text !=
+                                          'Selecione' &&
+                                      dropdownControllerLocalDeAtendimento
+                                              .text !=
+                                          'Selecione' &&
+                                      dropdownControllerSexo.text !=
+                                          'Selecione') {
+                                    alertSucess(context);
+                                    await updateRomeiro(
+                                      id: id,
+                                      dbHelper: dbHelper,
+                                      nome: controllerNome.text,
+                                      idade: int.parse(controllerIdade.text),
+                                      cidade: dropdownControllerCidade.text,
+                                      localDeAtendimento:
+                                          dropdownControllerLocalDeAtendimento
+                                              .text,
+                                      genero: dropdownControllerSexo.text,
+                                    );
+                                    // ignore: use_build_context_synchronously
+                                    navigateAndRemoveUntil(
+                                        context, const PageInicio());
+                                  } else {
+                                    alertFailField(context);
+                                  }
+                                }),
+                            const SizedBox(height: 20),
+                            // Botão de deletar romeiro
+                            buttonTypeA(
+                              text: "Deletar",
+                              ontap: () async {
+                                _showDeleteConfirmation(context);
+                              },
+                              color: const Color.fromARGB(
+                                  218, 244, 67, 54), // Botão vermelho
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 100),
-                ],
+                    const SizedBox(height: 100),
+                  ],
+                ),
               ),
-            ),
-    ));
+      )),
+    );
   }
 }

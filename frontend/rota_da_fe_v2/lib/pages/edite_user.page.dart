@@ -56,71 +56,74 @@ class _PageEditeUserState extends State<PageEditeUser> {
   Widget build(BuildContext context) {
     double largura = MediaQuery.of(context).size.width;
     double margem = 100.0;
-    return SafeArea(
-        child: Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            header(
-                onTap: () {
-                  navigateAndRemoveUntil(context, const PageInicio());
-                },
-                height: 80.0),
-            Center(
-              child: SizedBox(
-                width: largura > 400 ? 400 - 50 : (largura - margem),
-                child: Column(children: [
-                  const SizedBox(height: 30),
-                  const Center(
-                      child: Text("CADASTRO",
-                          style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xff427443)))),
-                  const SizedBox(height: 15),
-                  buildTextField(
-                      enabled: false,
-                      keyboardType: TextInputType.emailAddress,
-                      label: "Email",
-                      controller: controllerEmail,
-                      width: largura),
-                  buildTextField(
-                      keyboardType: TextInputType.text,
-                      label: "Bloco",
-                      controller: controllerBloco,
-                      width: largura),
-                  buildTextField(
-                      keyboardType: TextInputType.text,
-                      obscureText: true,
-                      label: "Senha",
-                      controller: controllerSenha,
-                      width: largura),
-                  const SizedBox(height: 20),
-                  buttonTypeA(
-                      text: "Editar cadastro",
-                      ontap: () async {
-                        if (controllerEmail.text.isNotEmpty &&
-                            controllerBloco.text.isNotEmpty &&
-                            controllerSenha.text.isNotEmpty) {
-                          alertSucessUpdate(context);
-                          await updateUser(
-                              dbHelper: dbHelper,
-                              id: 1,
-                              nome: controllerEmail.text,
-                              posto: controllerBloco.text,
-                              senha: controllerSenha.text);
-                          Navigator.of(context).pop();
-                        } else {
-                          alertFailField(context);
-                        }
-                      })
-                ]),
+    return Container(
+      color: Color(0xffEDB637).withOpacity(.58),
+      child: SafeArea(
+          child: Scaffold(
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              header(
+                  onTap: () {
+                    navigateAndRemoveUntil(context, const PageInicio());
+                  },
+                  height: 80.0),
+              Center(
+                child: SizedBox(
+                  width: largura > 400 ? 400 - 50 : (largura - margem),
+                  child: Column(children: [
+                    const SizedBox(height: 30),
+                    const Center(
+                        child: Text("CADASTRO",
+                            style: TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xff427443)))),
+                    const SizedBox(height: 15),
+                    buildTextField(
+                        enabled: false,
+                        keyboardType: TextInputType.emailAddress,
+                        label: "Email",
+                        controller: controllerEmail,
+                        width: largura),
+                    buildTextField(
+                        keyboardType: TextInputType.text,
+                        label: "Bloco",
+                        controller: controllerBloco,
+                        width: largura),
+                    buildTextField(
+                        keyboardType: TextInputType.text,
+                        obscureText: true,
+                        label: "Senha",
+                        controller: controllerSenha,
+                        width: largura),
+                    const SizedBox(height: 20),
+                    buttonTypeA(
+                        text: "Editar cadastro",
+                        ontap: () async {
+                          if (controllerEmail.text.isNotEmpty &&
+                              controllerBloco.text.isNotEmpty &&
+                              controllerSenha.text.isNotEmpty) {
+                            alertSucessUpdate(context);
+                            await updateUser(
+                                dbHelper: dbHelper,
+                                id: 1,
+                                nome: controllerEmail.text,
+                                posto: controllerBloco.text,
+                                senha: controllerSenha.text);
+                            Navigator.of(context).pop();
+                          } else {
+                            alertFailField(context);
+                          }
+                        })
+                  ]),
+                ),
               ),
-            ),
-            const SizedBox(height: 100),
-          ],
+              const SizedBox(height: 100),
+            ],
+          ),
         ),
-      ),
-    ));
+      )),
+    );
   }
 }

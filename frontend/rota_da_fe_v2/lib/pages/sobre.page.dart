@@ -43,43 +43,46 @@ class PageSobreApp extends StatelessWidget {
   Widget build(BuildContext context) {
     double largura = MediaQuery.of(context).size.width;
     double margem = 100.0;
-    return SafeArea(
-        child: Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            header(
-                onTap: () {
-                  navigateAndRemoveUntil(context, const PageInicio());
-                },
-                height: 80.0),
-            Center(
-              child: SizedBox(
-                width: largura > 400 ? 400 - 50 : (largura - margem),
-                child: Column(children: [
-                  SizedBox(
-                    width: largura - margem,
-                    child: Column(children: [
-                      textSection(title: "Sobre", text: rodapeTexto),
-                      textSection(
-                          image: "images/banner1.png",
-                          title: "Nossa motivação",
-                          text:
-                              "A fé do Círio de Nazaré nos inspira a aprimorar a experiência dos romeiros. O Rota da Fé une tradição e tecnologia para facilitar a jornada com uma ferramenta simples e eficiente. Nosso compromisso é garantir segurança e respeito à devoção, sempre evoluindo para ser um aliado na espiritualidade e bem-estar dos participantes."),
-                      const SizedBox(height: 15),
-                      sectionLogoExtensao(),
-                      const SizedBox(height: 15),
-                      textSection(title: "Equipe", text: EQUIPE),
-                      const SizedBox(height: 100),
-                    ]),
-                  ),
-                ]),
+    return Container(
+      color: Color(0xffEDB637).withOpacity(.58),
+      child: SafeArea(
+          child: Scaffold(
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              header(
+                  onTap: () {
+                    navigateAndRemoveUntil(context, const PageInicio());
+                  },
+                  height: 80.0),
+              Center(
+                child: SizedBox(
+                  width: largura > 400 ? 400 - 50 : (largura - margem),
+                  child: Column(children: [
+                    SizedBox(
+                      width: largura - margem,
+                      child: Column(children: [
+                        textSection(title: "Sobre", text: rodapeTexto),
+                        textSection(
+                            image: "images/banner1.png",
+                            title: "Nossa motivação",
+                            text:
+                                "A fé do Círio de Nazaré nos inspira a aprimorar a experiência dos romeiros. O Rota da Fé une tradição e tecnologia para facilitar a jornada com uma ferramenta simples e eficiente. Nosso compromisso é garantir segurança e respeito à devoção, sempre evoluindo para ser um aliado na espiritualidade e bem-estar dos participantes."),
+                        const SizedBox(height: 15),
+                        sectionLogoExtensao(),
+                        const SizedBox(height: 15),
+                        textSection(title: "Equipe", text: EQUIPE),
+                        const SizedBox(height: 100),
+                      ]),
+                    ),
+                  ]),
+                ),
               ),
-            ),
-            const SizedBox(height: 100),
-          ],
+              const SizedBox(height: 100),
+            ],
+          ),
         ),
-      ),
-    ));
+      )),
+    );
   }
 }

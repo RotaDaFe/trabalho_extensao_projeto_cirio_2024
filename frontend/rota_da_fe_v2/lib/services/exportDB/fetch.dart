@@ -11,6 +11,12 @@ Future<int> exportDatabase({required SqfliteHelper dbHelper}) async {
     // resgata os dados do meus pacientes
     List<dynamic> data = await getAllRomeiros(dbHelper: dbHelper);
     List dataQuery = [];
+
+    // Verifica se há romeiros cadastrados
+    if (data.isEmpty) {
+      return 404; // Retorna código 404 se não houver romeiros cadastrados
+    }
+
     Map<String, dynamic> usuario = {
       'idUser': user[0]['nome'],
       'nome': '',
@@ -41,8 +47,6 @@ Future<int> exportDatabase({required SqfliteHelper dbHelper}) async {
       "password": user[0]['senha']
     };
     var url = Uri.parse('https://api-cirio-2024.netlify.app/api/romeiros');
-    // var body = json.encode({'usuarios': users});
-    print(bodyRequest);
     var response = await http.post(
       url,
       headers: {
@@ -97,7 +101,6 @@ Future exportDatabaseCopy({required SqfliteHelper dbHelper}) async {
       "romeiros": dataQuery,
       "password": user[0]['senha']
     };
-    print(bodyRequest);
     return json.encode(bodyRequest);
   } catch (e) {
     return "";

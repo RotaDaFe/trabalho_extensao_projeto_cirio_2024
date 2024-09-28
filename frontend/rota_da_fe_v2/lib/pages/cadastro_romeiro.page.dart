@@ -185,91 +185,94 @@ class _PageCadastroRomeiroState extends State<PageCadastroRomeiro> {
   Widget build(BuildContext context) {
     double largura = MediaQuery.of(context).size.width;
     double margem = 100.0;
-    return SafeArea(
-        child: Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            header(
-                onTap: () {
-                  navigateAndRemoveUntil(context, const PageInicio());
-                },
-                height: 80.0),
-            Center(
-              child: SizedBox(
-                width: largura > 400 ? 400 - 50 : (largura - margem),
-                child: Column(children: [
-                  const SizedBox(height: 30),
-                  const Center(
-                      child: Text("CADASTRO",
-                          style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xff427443)))),
-                  const SizedBox(height: 15),
-                  buildTextField(
-                      keyboardType: TextInputType.name,
-                      label: "Nome",
-                      controller: controllerNome,
-                      width: largura),
-                  buildTextField(
-                      keyboardType: const TextInputType.numberWithOptions(
-                          decimal: false, signed: false),
-                      label: "Idade",
-                      isNumber: true,
-                      controller: controllerIdade,
-                      width: largura),
-                  buildDropdownButton(
-                      label: "Cidade",
-                      items: cidades, // Lista de opções
-                      controller: dropdownControllerCidade,
-                      initialValue: "Selecione",
-                      width: largura),
-                  buildDropdownButton(
-                      label: "Sexo",
-                      items: sexo, // Lista de opções
-                      controller: dropdownControllerSexo,
-                      initialValue: "Selecione",
-                      width: largura),
-                  buildDropdownButton(
-                      label: "Local de atendimento",
-                      items: locaDeAtendimento, // Lista de opções
-                      controller: dropdownControllerLocalDeAtendimento,
-                      initialValue: "Selecione",
-                      width: largura),
-                  const SizedBox(height: 20),
-                  buttonTypeA(
-                      text: "Cadastra",
-                      ontap: () async {
-                        if (controllerNome.text.isNotEmpty &&
-                            controllerIdade.text.isNotEmpty &&
-                            dropdownControllerCidade.text != 'Selecione' &&
-                            dropdownControllerLocalDeAtendimento.text !=
-                                'Selecione' &&
-                            dropdownControllerSexo.text != 'Selecione') {
-                          alertSucess(context);
-                          await addRomeiro(
-                            dbHelper: dbHelper,
-                            nome: controllerNome.text,
-                            idade: controllerIdade.text,
-                            cidade: dropdownControllerCidade.text,
-                            localDeAtendimento:
-                                dropdownControllerLocalDeAtendimento.text,
-                            genero: dropdownControllerSexo.text,
-                          );
-                          // ignore: use_build_context_synchronously
-                          navigateAndRemoveUntil(context, const PageInicio());
-                        } else {
-                          alertFailField(context);
-                        }
-                      })
-                ]),
+    return Container(
+      color: Color(0xffEDB637).withOpacity(.58),
+      child: SafeArea(
+          child: Scaffold(
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              header(
+                  onTap: () {
+                    navigateAndRemoveUntil(context, const PageInicio());
+                  },
+                  height: 80.0),
+              Center(
+                child: SizedBox(
+                  width: largura > 400 ? 400 - 50 : (largura - margem),
+                  child: Column(children: [
+                    const SizedBox(height: 30),
+                    const Center(
+                        child: Text("CADASTRO",
+                            style: TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xff427443)))),
+                    const SizedBox(height: 15),
+                    buildTextField(
+                        keyboardType: TextInputType.name,
+                        label: "Nome",
+                        controller: controllerNome,
+                        width: largura),
+                    buildTextField(
+                        keyboardType: const TextInputType.numberWithOptions(
+                            decimal: false, signed: false),
+                        label: "Idade",
+                        isNumber: true,
+                        controller: controllerIdade,
+                        width: largura),
+                    buildDropdownButton(
+                        label: "Cidade",
+                        items: cidades, // Lista de opções
+                        controller: dropdownControllerCidade,
+                        initialValue: "Selecione",
+                        width: largura),
+                    buildDropdownButton(
+                        label: "Sexo",
+                        items: sexo, // Lista de opções
+                        controller: dropdownControllerSexo,
+                        initialValue: "Selecione",
+                        width: largura),
+                    buildDropdownButton(
+                        label: "Local de atendimento",
+                        items: locaDeAtendimento, // Lista de opções
+                        controller: dropdownControllerLocalDeAtendimento,
+                        initialValue: "Selecione",
+                        width: largura),
+                    const SizedBox(height: 20),
+                    buttonTypeA(
+                        text: "Cadastra",
+                        ontap: () async {
+                          if (controllerNome.text.isNotEmpty &&
+                              controllerIdade.text.isNotEmpty &&
+                              dropdownControllerCidade.text != 'Selecione' &&
+                              dropdownControllerLocalDeAtendimento.text !=
+                                  'Selecione' &&
+                              dropdownControllerSexo.text != 'Selecione') {
+                            alertSucess(context);
+                            await addRomeiro(
+                              dbHelper: dbHelper,
+                              nome: controllerNome.text,
+                              idade: controllerIdade.text,
+                              cidade: dropdownControllerCidade.text,
+                              localDeAtendimento:
+                                  dropdownControllerLocalDeAtendimento.text,
+                              genero: dropdownControllerSexo.text,
+                            );
+                            // ignore: use_build_context_synchronously
+                            navigateAndRemoveUntil(context, const PageInicio());
+                          } else {
+                            alertFailField(context);
+                          }
+                        })
+                  ]),
+                ),
               ),
-            ),
-            const SizedBox(height: 100),
-          ],
+              const SizedBox(height: 100),
+            ],
+          ),
         ),
-      ),
-    ));
+      )),
+    );
   }
 }

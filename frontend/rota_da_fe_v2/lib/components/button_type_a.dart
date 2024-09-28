@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-Widget buttonTypeA({text = '', required Function ontap}) {
+Widget buttonTypeA(
+    {text = '',
+    required Function ontap,
+    Color color = const Color(0xff427443)}) {
   return InkWell(
     onTap: () {
       ontap();
@@ -9,7 +12,7 @@ Widget buttonTypeA({text = '', required Function ontap}) {
       width: 200,
       height: 60,
       decoration: BoxDecoration(
-          color: const Color(0xff427443),
+          color: color,
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(

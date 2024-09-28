@@ -54,22 +54,53 @@ class _PageConfiguracaoState extends State<PageConfiguracao> {
       // Fechar o popup de loading
       Navigator.of(context).pop();
 
-      // Verificar o status da exportação e exibir mensagens adequadas
-      if (statusCode == 200 || statusCode == 201) {
-        // Exibir popup de sucesso
-        QuickAlert.show(
-          context: context,
-          type: QuickAlertType.success,
-          title: 'Exportação concluída!',
-          text: 'Os dados foram exportados com sucesso.',
-        );
-      } else {
-        // Exibir popup de erro
+      // Verificar o status da exportação e exibir mensagens personalizadas
+      if (statusCode == 404) {
         QuickAlert.show(
           context: context,
           type: QuickAlertType.error,
-          title: 'Erro na exportação',
-          text: 'Houve um erro ao exportar os dados. Código: $statusCode',
+          title: 'Nenhum romeiro cadastrado',
+          text: 'Não há romeiros cadastrados neste dispositivo.',
+        );
+      } else if (statusCode == 403) {
+        QuickAlert.show(
+          context: context,
+          type: QuickAlertType.error,
+          title: 'Acesso negado',
+          text:
+              'A senha fornecida está incorreta. Verifique e tente novamente.',
+        );
+      } else if (statusCode == 400) {
+        QuickAlert.show(
+          context: context,
+          type: QuickAlertType.error,
+          title: 'Erro nos dados',
+          text:
+              'Os dados parecem estar vazios ou corrompidos. Verifique e tente exportar novamente.',
+        );
+      } else if (statusCode == 201) {
+        QuickAlert.show(
+          context: context,
+          type: QuickAlertType.success,
+          title: 'Exportação concluída',
+          text: 'Os dados foram exportados com sucesso para a nuvem.',
+        );
+      } else if (statusCode == 500) {
+        QuickAlert.show(
+          context: context,
+          type: QuickAlertType.error,
+          title: 'Erro no servidor',
+          text:
+              'Ocorreu um erro interno no servidor. Tente novamente mais tarde.',
+        );
+      } else {
+        // Exibir popup de erro para outros status de erro desconhecidos
+        QuickAlert.show(
+          context: context,
+          type: QuickAlertType.error,
+          title: 'Erro desconhecido',
+          text:
+              'Houve um erro inesperado ao exportar os dados. Código: $statusCode',
         );
       }
     } catch (error) {
@@ -123,77 +154,80 @@ class _PageConfiguracaoState extends State<PageConfiguracao> {
     double largura = MediaQuery.of(context).size.width;
     double margem = 100.0;
 
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              header(
-                onTap: () {
-                  navigateAndRemoveUntil(context, const PageInicio());
-                },
-                height: 80.0,
-              ),
-              Center(
-                child: SizedBox(
-                  width: largura > 400 ? 400 - 50 : (largura - margem),
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 30),
-                      const Center(
-                        child: Text(
-                          "Configuração",
-                          style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(218, 66, 116, 67),
+    return Container(
+      color: const Color(0xffEDB637).withOpacity(.58),
+      child: SafeArea(
+        child: Scaffold(
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                header(
+                  onTap: () {
+                    navigateAndRemoveUntil(context, const PageInicio());
+                  },
+                  height: 80.0,
+                ),
+                Center(
+                  child: SizedBox(
+                    width: largura > 400 ? 400 - 50 : (largura - margem),
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 30),
+                        const Center(
+                          child: Text(
+                            "Configuração",
+                            style: TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(218, 66, 116, 67),
+                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 15),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: butttonDropdow(
-                          width: largura - margem,
-                          ontap: () {
-                            Navigator.of(context).push(SlideTransitionPage(
-                                page: const PageEditeUser()));
-                          },
-                          text: "Editar cadastro",
-                          textSub: "Clique e saiba mais",
-                          icon: Icons.edit_outlined,
+                        const SizedBox(height: 15),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: butttonDropdow(
+                            width: largura - margem,
+                            ontap: () {
+                              Navigator.of(context).push(SlideTransitionPage(
+                                  page: const PageEditeUser()));
+                            },
+                            text: "Editar cadastro",
+                            textSub: "Clique e saiba mais",
+                            icon: Icons.edit_outlined,
+                          ),
                         ),
-                      ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: butttonDropdow(
-                          width: largura - 100,
-                          ontap: () {
-                            _showConfirmExportDialog(context);
-                          },
-                          text: "Exportar dados",
-                          textSub: "Clique e saiba mais",
-                          icon: Icons.dashboard,
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: butttonDropdow(
+                            width: largura - 100,
+                            ontap: () {
+                              _showConfirmExportDialog(context);
+                            },
+                            text: "Exportar dados",
+                            textSub: "Clique e saiba mais",
+                            icon: Icons.dashboard,
+                          ),
                         ),
-                      ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: butttonDropdow(
-                          width: largura - 100,
-                          ontap: () {
-                            _copyExportDataToClipboard(context);
-                          },
-                          text: "Copiar dados para área de transferência",
-                          textSub: "Clique para copiar os dados exportados",
-                          icon: Icons.copy,
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: butttonDropdow(
+                            width: largura - 100,
+                            ontap: () {
+                              _copyExportDataToClipboard(context);
+                            },
+                            text: "Copiar dados para área de transferência",
+                            textSub: "Clique para copiar os dados exportados",
+                            icon: Icons.copy,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 100),
-            ],
+                const SizedBox(height: 100),
+              ],
+            ),
           ),
         ),
       ),

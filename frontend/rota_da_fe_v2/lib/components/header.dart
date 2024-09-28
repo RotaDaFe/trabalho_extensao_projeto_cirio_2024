@@ -20,10 +20,10 @@ Widget header({required Function onTap, height = 90.0}) {
             onTap();
           },
           child: const SizedBox(
-              height: 70,
+              height: 60,
               child: Image(
-                image: AssetImage("images/iconHome.png"),
-                fit: BoxFit.fill,
+                image: AssetImage("images/icon_home.png"),
+                fit: BoxFit.fitHeight,
               )),
         ),
         const Spacer(flex: 50),

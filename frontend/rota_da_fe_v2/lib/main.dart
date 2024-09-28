@@ -1,3 +1,5 @@
+// ignore_for_file: dead_code
+
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:rota_da_fe_v2/pages/splash_screen.dart';
@@ -9,17 +11,27 @@ void main() {
   FlutterNativeSplash.remove();
 
   // Variável para ativar/desativar o Device Preview
+  // develop mode => isPreviewEnabled => true
+  // procution mode => isPreviewEnabled => false
   bool isPreviewEnabled = false; // Mude para 'false' para desativar o preview
 
-  runApp(
-    DevicePreview(
-      enabled: isPreviewEnabled,
-      builder: (context) =>
-          const MyApp(), // Substitua pelo seu widget principal
-    ),
-  );
+  isPreviewEnabled
+      // develop
+      ? runApp(
+          DevicePreview(
+            enabled: isPreviewEnabled,
+            builder: (context) =>
+                const MyApp(), // Substitua pelo seu widget principal
+          ),
+        )
+      :
+      // production
+      runApp(MaterialApp(
+          home: const SplashScreen(),
+        ));
 }
 
+// device_preview settings
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
