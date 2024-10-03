@@ -23,6 +23,7 @@ class PageCadastroRomeiro extends StatefulWidget {
 
 class _PageCadastroRomeiroState extends State<PageCadastroRomeiro> {
   SqfliteHelper dbHelper = SqfliteHelper();
+
   List<String> locaDeAtendimento = ["Selecione", "casa de placido", "tribunal"];
   List<String> sexo = ["Selecione", "Feminino", "Masculino", "Outros"];
   List<String> cidades = [
@@ -174,6 +175,7 @@ class _PageCadastroRomeiroState extends State<PageCadastroRomeiro> {
   ];
   TextEditingController controllerNome = TextEditingController();
   TextEditingController controllerIdade = TextEditingController();
+  TextEditingController controllerCondicaoFisica = TextEditingController();
   TextEditingController dropdownControllerLocalDeAtendimento =
       TextEditingController();
   TextEditingController dropdownControllerCidade = TextEditingController();
@@ -239,9 +241,15 @@ class _PageCadastroRomeiroState extends State<PageCadastroRomeiro> {
                         controller: dropdownControllerLocalDeAtendimento,
                         initialValue: "Selecione",
                         width: largura),
+                    buildTextField(
+                        keyboardType: TextInputType.text,
+                        label: "Condição Física", 
+                        controller: controllerCondicaoFisica,
+                        width: largura),
+                        
                     const SizedBox(height: 20),
                     buttonTypeA(
-                        text: "Cadastra",
+                        text: "Cadastrar",
                         ontap: () async {
                           if (controllerNome.text.isNotEmpty &&
                               controllerIdade.text.isNotEmpty &&

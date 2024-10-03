@@ -48,7 +48,7 @@ class Widgetmenu extends StatelessWidget {
                     Container(
                       width: double.infinity,
                       height: 100,
-                      color: Color(0xFF427443),
+                      color: const Color(0xFF427443),
                     ),
                     // Botão "Total de Cadastros"
                     Align(
