@@ -33,7 +33,8 @@ class SqfliteHelper {
         idade INTEGER,
         cidade TEXT,
         localDeAtendimento TEXT,
-        sexo TEXT
+        sexo TEXT,
+        patologia TEXT
       )
     ''');
 

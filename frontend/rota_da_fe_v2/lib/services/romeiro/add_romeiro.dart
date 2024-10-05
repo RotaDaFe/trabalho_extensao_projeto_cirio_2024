@@ -7,6 +7,7 @@ Future addRomeiro({
   required cidade,
   required localDeAtendimento,
   required genero,
+  required patologia,
 }) async {
   // SqfliteHelper dbHelper = SqfliteHelper();
 
@@ -16,6 +17,7 @@ Future addRomeiro({
     'cidade': cidade,
     'localDeAtendimento': localDeAtendimento,
     'sexo': genero,
+    'patologia': patologia,
     // 'data_cadastro': DateTime.now().toIso8601String(),
   };
 

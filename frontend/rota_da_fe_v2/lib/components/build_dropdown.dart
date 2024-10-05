@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-Widget buildDropdownButton({
-  required String label,
-  required List<String> items, // Lista de valores
-  required TextEditingController
-      controller, // Controlador para o valor selecionado
-  required String initialValue, // Valor inicial
-  required double width, // Largura do widget
-}) {
+Widget buildDropdownButton(
+    {required String label,
+    required List<String> items, // Lista de valores
+    required TextEditingController
+        controller, // Controlador para o valor selecionado
+    required String initialValue, // Valor inicial
+    required double width, // Largura do widget
+    Function? onChanged}) {
   return SizedBox(
     width: width,
     child: Column(
@@ -66,6 +66,7 @@ Widget buildDropdownButton({
                         if (newValue != null) {
                           controller.text = newValue; // Atualiza o controlador
                         }
+                        onChanged != null ? onChanged() : () {};
                       },
                       items:
                           items.map<DropdownMenuItem<String>>((String value) {

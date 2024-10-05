@@ -24,6 +24,7 @@ Future<int> exportDatabase({required SqfliteHelper dbHelper}) async {
       'cidade': '',
       'localDeAtendimento': '',
       'sexo': '',
+      'patologia': '',
     };
 
     for (var e in data) {
@@ -32,6 +33,7 @@ Future<int> exportDatabase({required SqfliteHelper dbHelper}) async {
       usuario['cidade'] = e['cidade'];
       usuario['localDeAtendimento'] = e['localDeAtendimento'];
       usuario['sexo'] = e['sexo'];
+      usuario['patologia'] = e['patologia'];
       dataQuery.add(usuario);
       usuario = {
         'idUser': user[0]['nome'],
@@ -40,13 +42,18 @@ Future<int> exportDatabase({required SqfliteHelper dbHelper}) async {
         'cidade': '',
         'localDeAtendimento': '',
         'sexo': '',
+        'patologia': '',
       };
     }
     Map<String, dynamic> bodyRequest = {
       "romeiros": dataQuery,
       "password": user[0]['senha']
     };
-    var url = Uri.parse('https://api-cirio-2024.netlify.app/api/romeiros');
+    // server
+    var baseURL = "https://api-cirio-2024.netlify.app";
+    // local
+    // var baseURL = "http://192.168.1.36:3000";
+    var url = Uri.parse('$baseURL/api/romeiros');
     var response = await http.post(
       url,
       headers: {
@@ -54,7 +61,6 @@ Future<int> exportDatabase({required SqfliteHelper dbHelper}) async {
       },
       body: json.encode(bodyRequest),
     );
-
     if (response.statusCode == 200 || response.statusCode == 201) {
       return response.statusCode;
     } else {
@@ -79,6 +85,7 @@ Future exportDatabaseCopy({required SqfliteHelper dbHelper}) async {
       'cidade': '',
       'localDeAtendimento': '',
       'sexo': '',
+      'patologia': '',
     };
 
     for (var e in data) {
@@ -87,6 +94,7 @@ Future exportDatabaseCopy({required SqfliteHelper dbHelper}) async {
       usuario['cidade'] = e['cidade'];
       usuario['localDeAtendimento'] = e['localDeAtendimento'];
       usuario['sexo'] = e['sexo'];
+      usuario['patologia'] = e['patologia'];
       dataQuery.add(usuario);
       usuario = {
         'idUser': user[0]['nome'],
@@ -95,11 +103,11 @@ Future exportDatabaseCopy({required SqfliteHelper dbHelper}) async {
         'cidade': '',
         'localDeAtendimento': '',
         'sexo': '',
+        'patologia': '',
       };
     }
     Map<String, dynamic> bodyRequest = {
       "romeiros": dataQuery,
-      "password": user[0]['senha']
     };
     return json.encode(bodyRequest);
   } catch (e) {

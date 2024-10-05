@@ -8,6 +8,7 @@ import 'package:rota_da_fe_v2/effects/slide_transition_page_remove.dart';
 import 'package:rota_da_fe_v2/messageAlerts/alerts.dart';
 import 'package:rota_da_fe_v2/components/build_dropdown.dart';
 import 'package:rota_da_fe_v2/pages/inicio.page.dart';
+import 'package:rota_da_fe_v2/services/patologias/data.dart';
 import 'package:rota_da_fe_v2/services/romeiro/delete_one_romeiro.dart';
 import 'package:rota_da_fe_v2/services/romeiro/get_one_romeiro.dart';
 import 'package:rota_da_fe_v2/services/romeiro/update_romeiro.dart';
@@ -183,6 +184,10 @@ class _PageEditarCadastroRomeiroState extends State<PageEditarCadastroRomeiro> {
       TextEditingController();
   TextEditingController dropdownControllerCidade = TextEditingController();
   TextEditingController dropdownControllerSexo = TextEditingController();
+  TextEditingController dropdowncontrollerCondicaoFisica =
+      TextEditingController();
+  TextEditingController controllerCondicaoFisica = TextEditingController();
+  bool inputPersonalizado = false;
 
   @override
   void initState() {
@@ -197,6 +202,24 @@ class _PageEditarCadastroRomeiroState extends State<PageEditarCadastroRomeiro> {
     );
 
     // Preenche os campos com os dados do romeiro
+
+    var condicaoFisica = romeiroData['patologia'];
+    //
+    // verifica se condição fisica existe em patologiasMaisVistas
+    if (patologiasMaisVistas.contains(condicaoFisica)) {
+      setState(() {
+        dropdowncontrollerCondicaoFisica.text = condicaoFisica;
+        inputPersonalizado = false;
+      });
+    } else {
+      // caso não exista
+      setState(() {
+        dropdowncontrollerCondicaoFisica.text = "Outros";
+        controllerCondicaoFisica.text = condicaoFisica;
+        inputPersonalizado = true;
+      });
+    }
+    // set os demais estados
     setState(() {
       id = romeiroData['id'];
       controllerNome.text = romeiroData['nome'];
@@ -312,6 +335,33 @@ class _PageEditarCadastroRomeiroState extends State<PageEditarCadastroRomeiro> {
                                             .text
                                         : "Selecione",
                                 width: largura),
+
+                            // verifique se foi selecionado "Outros"
+                            // caso sim então exiba o input personalizado
+
+                            buildDropdownButton(
+                                label: "Condição Física",
+                                items: patologiasMaisVistas, // Lista de opções
+                                controller: dropdowncontrollerCondicaoFisica,
+                                initialValue: dropdowncontrollerCondicaoFisica
+                                        .text.isNotEmpty
+                                    ? dropdowncontrollerCondicaoFisica.text
+                                    : "Selecione",
+                                width: largura,
+                                onChanged: () {
+                                  setState(() {
+                                    inputPersonalizado =
+                                        dropdowncontrollerCondicaoFisica.text ==
+                                            "Outros";
+                                  });
+                                }),
+                            inputPersonalizado
+                                ? buildTextField(
+                                    keyboardType: TextInputType.text,
+                                    label: "Condição Física",
+                                    controller: controllerCondicaoFisica,
+                                    width: largura)
+                                : Container(),
                             const SizedBox(height: 20),
                             buttonTypeA(
                                 text: "Atualizar",
@@ -324,22 +374,64 @@ class _PageEditarCadastroRomeiroState extends State<PageEditarCadastroRomeiro> {
                                               .text !=
                                           'Selecione' &&
                                       dropdownControllerSexo.text !=
+                                          'Selecione' &&
+                                      dropdowncontrollerCondicaoFisica.text !=
                                           'Selecione') {
-                                    alertSucess(context);
-                                    await updateRomeiro(
-                                      id: id,
-                                      dbHelper: dbHelper,
-                                      nome: controllerNome.text,
-                                      idade: int.parse(controllerIdade.text),
-                                      cidade: dropdownControllerCidade.text,
-                                      localDeAtendimento:
-                                          dropdownControllerLocalDeAtendimento
-                                              .text,
-                                      genero: dropdownControllerSexo.text,
-                                    );
-                                    // ignore: use_build_context_synchronously
-                                    navigateAndRemoveUntil(
-                                        context, const PageInicio());
+                                    //
+                                    // verifica se o input personalizado ta ativado
+                                    if (controllerCondicaoFisica.text.isEmpty) {
+                                      //
+                                      // veerifica se  controller CondicaoFisica tem algo
+                                      if (controllerCondicaoFisica
+                                          .text.isEmpty) {
+                                        alertFailField(context);
+                                      } else {
+                                        //
+                                        // Caso input personalizado esteja ativado E controller esteja preenchido
+                                        // então rode
+                                        alertSucess(context);
+                                        // falta atualizar
+
+                                        await updateRomeiro(
+                                            id: id,
+                                            dbHelper: dbHelper,
+                                            nome: controllerNome.text,
+                                            idade:
+                                                int.parse(controllerIdade.text),
+                                            cidade:
+                                                dropdownControllerCidade.text,
+                                            localDeAtendimento:
+                                                dropdownControllerLocalDeAtendimento
+                                                    .text,
+                                            genero: dropdownControllerSexo.text,
+                                            patologia:
+                                                controllerCondicaoFisica.text);
+                                        // ignore: use_build_context_synchronously
+                                        navigateAndRemoveUntil(
+                                            context, const PageInicio());
+                                      }
+                                    } else {
+                                      // caso o  input personalizado esteja desativado
+                                      // então rodee
+                                      alertSucess(context);
+                                      await updateRomeiro(
+                                          id: id,
+                                          dbHelper: dbHelper,
+                                          nome: controllerNome.text,
+                                          idade:
+                                              int.parse(controllerIdade.text),
+                                          cidade: dropdownControllerCidade.text,
+                                          localDeAtendimento:
+                                              dropdownControllerLocalDeAtendimento
+                                                  .text,
+                                          genero: dropdownControllerSexo.text,
+                                          patologia:
+                                              dropdowncontrollerCondicaoFisica
+                                                  .text);
+                                      // ignore: use_build_context_synchronously
+                                      navigateAndRemoveUntil(
+                                          context, const PageInicio());
+                                    }
                                   } else {
                                     alertFailField(context);
                                   }

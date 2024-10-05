@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget header({required Function onTap, height = 90.0}) {
+Widget header({disable_icon = false, required Function onTap, height = 90.0}) {
   return Container(
     height: height,
     width: double.infinity,
@@ -15,17 +15,19 @@ Widget header({required Function onTap, height = 90.0}) {
     child: Row(
       children: [
         const Spacer(flex: 20),
-        InkWell(
-          onTap: () {
-            onTap();
-          },
-          child: const SizedBox(
-              height: 60,
-              child: Image(
-                image: AssetImage("images/icon_home.png"),
-                fit: BoxFit.fitHeight,
-              )),
-        ),
+        disable_icon
+            ? Spacer(flex: 30)
+            : InkWell(
+                onTap: () {
+                  onTap();
+                },
+                child: const SizedBox(
+                    height: 60,
+                    child: Image(
+                      image: AssetImage("images/icon_home.png"),
+                      fit: BoxFit.fitHeight,
+                    )),
+              ),
         const Spacer(flex: 50),
         const Text("Círio 2024",
             style: TextStyle(

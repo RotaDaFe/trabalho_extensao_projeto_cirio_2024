@@ -12,6 +12,8 @@ import 'package:rota_da_fe_v2/effects/slide_transition_page_remove.dart';
 import 'package:rota_da_fe_v2/messageAlerts/alerts.dart';
 import 'package:rota_da_fe_v2/components/build_dropdown.dart';
 import 'package:rota_da_fe_v2/pages/inicio.page.dart';
+import 'package:rota_da_fe_v2/services/cidades/data.dart';
+import 'package:rota_da_fe_v2/services/patologias/data.dart';
 import 'package:rota_da_fe_v2/services/romeiro/add_romeiro.dart';
 
 class PageCadastroRomeiro extends StatefulWidget {
@@ -26,163 +28,22 @@ class _PageCadastroRomeiroState extends State<PageCadastroRomeiro> {
 
   List<String> locaDeAtendimento = ["Selecione", "casa de placido", "tribunal"];
   List<String> sexo = ["Selecione", "Feminino", "Masculino", "Outros"];
-  List<String> cidades = [
-    "Selecione",
-    "Belem",
-    "Ananindeua",
-    "Abaetetuba",
-    "Barcarena",
-    "Castanhal",
-    "maranhao",
-    "Abel Figueiredo",
-    "Acará",
-    "Afuá",
-    "Água Azul do Norte",
-    "Alenquer",
-    "Almeirim",
-    "Altamira",
-    "Anajás",
-    "Anapu",
-    "Augusto Corrêa",
-    "Aurora do Pará",
-    "Aveiro",
-    "Bagre",
-    "Baião",
-    "Bannach",
-    "Belterra",
-    "Benevides",
-    "Bom Jesus do Tocantins",
-    "Bonito",
-    "Bragança",
-    "Brasil Novo",
-    "Brejo Grande do Araguaia",
-    "Breu Branco",
-    "Breves",
-    "Bujaru",
-    "Cachoeira do Arari",
-    "Cachoeira do Piriá",
-    "Cametá",
-    "Canaã dos Carajás",
-    "Capanema",
-    "Capitão Poço",
-    "Chaves",
-    "Colares",
-    "Conceição do Araguaia",
-    "Concórdia do Pará",
-    "Cumaru do Norte",
-    "Curionópolis",
-    "Curralinho",
-    "Curuá",
-    "Curuçá",
-    "Dom Eliseu",
-    "Eldorado dos Carajás",
-    "Faro",
-    "Floresta do Araguaia",
-    "Garrafão do Norte",
-    "Goianésia do Pará",
-    "Gurupá",
-    "Igarapé-Açu",
-    "Igarapé-Miri",
-    "Inhangapi",
-    "Ipixuna do Pará",
-    "Irituia",
-    "Itaituba",
-    "Itupiranga",
-    "Jacareacanga",
-    "Jacundá",
-    "Juruti",
-    "Limoeiro do Ajuru",
-    "Mãe do Rio",
-    "Magalhães Barata",
-    "Marabá",
-    "Maracanã",
-    "Marapanim",
-    "Marituba",
-    "Medicilândia",
-    "Melgaço",
-    "Mocajuba",
-    "Moju",
-    "Monte Alegre",
-    "Muaná",
-    "Nova Esperança do Piriá",
-    "Nova Ipixuna",
-    "Nova Timboteua",
-    "Novo Progresso",
-    "Novo Repartimento",
-    "Óbidos",
-    "Oeiras do Pará",
-    "Oriximiná",
-    "Ourém",
-    "Ourilândia do Norte",
-    "Pacajá",
-    "Palestina do Pará",
-    "Paragominas",
-    "Parauapebas",
-    "Pau D'Arco",
-    "Peixe-Boi",
-    "Piçarra",
-    "Placas",
-    "Ponta de Pedras",
-    "Portel",
-    "Porto de Moz",
-    "Prainha",
-    "Primavera",
-    "Quatipuru",
-    "Redenção",
-    "Rio Maria",
-    "Rondon do Pará",
-    "Rurópolis",
-    "Salinópolis",
-    "Salvaterra",
-    "Santa Bárbara do Pará",
-    "Santa Cruz do Arari",
-    "Santa Isabel do Pará",
-    "Santa Luzia do Pará",
-    "Santa Maria das Barreiras",
-    "Santa Maria do Pará",
-    "Santana do Araguaia",
-    "Santarém",
-    "Santarém Novo",
-    "Santo Antônio do Tauá",
-    "São Caetano de Odivelas",
-    "São Domingos do Araguaia",
-    "São Domingos do Capim",
-    "São Félix do Xingu",
-    "São Francisco do Pará",
-    "São Geraldo do Araguaia",
-    "São João da Ponta",
-    "São João de Pirabas",
-    "São João do Araguaia",
-    "São Miguel do Guamá",
-    "São Sebastião da Boa Vista",
-    "Sapucaia",
-    "Senador José Porfírio",
-    "Soure",
-    "Tailândia",
-    "Terra Alta",
-    "Terra Santa",
-    "Tomé-Açu",
-    "Tracuateua",
-    "Trairão",
-    "Tucumã",
-    "Tucuruí",
-    "Ulianópolis",
-    "Uruará",
-    "Vigia",
-    "Viseu",
-    "Vitória do Xingu",
-    "Xinguara"
-  ];
+
   TextEditingController controllerNome = TextEditingController();
   TextEditingController controllerIdade = TextEditingController();
+  TextEditingController dropdowncontrollerCondicaoFisica =
+      TextEditingController();
   TextEditingController controllerCondicaoFisica = TextEditingController();
   TextEditingController dropdownControllerLocalDeAtendimento =
       TextEditingController();
   TextEditingController dropdownControllerCidade = TextEditingController();
   TextEditingController dropdownControllerSexo = TextEditingController();
+  List<String> patologiaMaisVistas = patologiasMaisVistas;
+  bool inputPersonalizado = false;
   String? selectedCity;
   String? selectedLocation;
   String? gender;
+
   @override
   Widget build(BuildContext context) {
     double largura = MediaQuery.of(context).size.width;
@@ -241,34 +102,88 @@ class _PageCadastroRomeiroState extends State<PageCadastroRomeiro> {
                         controller: dropdownControllerLocalDeAtendimento,
                         initialValue: "Selecione",
                         width: largura),
-                    buildTextField(
-                        keyboardType: TextInputType.text,
-                        label: "Condição Física", 
-                        controller: controllerCondicaoFisica,
-                        width: largura),
-                        
+                    // verifique se foi selecionado "Outros"
+                    // caso sim então exiba o input personalizado
+
+                    buildDropdownButton(
+                        label: "Condição Física",
+                        items: patologiaMaisVistas, // Lista de opções
+                        controller: dropdowncontrollerCondicaoFisica,
+                        initialValue: "Selecione",
+                        width: largura,
+                        onChanged: () {
+                          setState(() {
+                            inputPersonalizado =
+                                dropdowncontrollerCondicaoFisica.text ==
+                                    "Outros";
+                          });
+                        }),
+                    inputPersonalizado
+                        ? buildTextField(
+                            keyboardType: TextInputType.text,
+                            label: "Condição Física",
+                            controller: controllerCondicaoFisica,
+                            width: largura)
+                        : Container(),
                     const SizedBox(height: 20),
                     buttonTypeA(
                         text: "Cadastrar",
                         ontap: () async {
+                          // verifica se os campos estão preenchidos
                           if (controllerNome.text.isNotEmpty &&
                               controllerIdade.text.isNotEmpty &&
                               dropdownControllerCidade.text != 'Selecione' &&
                               dropdownControllerLocalDeAtendimento.text !=
                                   'Selecione' &&
-                              dropdownControllerSexo.text != 'Selecione') {
-                            alertSucess(context);
-                            await addRomeiro(
-                              dbHelper: dbHelper,
-                              nome: controllerNome.text,
-                              idade: controllerIdade.text,
-                              cidade: dropdownControllerCidade.text,
-                              localDeAtendimento:
-                                  dropdownControllerLocalDeAtendimento.text,
-                              genero: dropdownControllerSexo.text,
-                            );
-                            // ignore: use_build_context_synchronously
-                            navigateAndRemoveUntil(context, const PageInicio());
+                              dropdownControllerSexo.text != 'Selecione' &&
+                              dropdowncontrollerCondicaoFisica.text !=
+                                  'Selecione') {
+                            //
+                            // verifica se o input personalizado ta ativado
+                            if (inputPersonalizado) {
+                              //
+                              // veerifica se  controller CondicaoFisica tem algo
+                              if (controllerCondicaoFisica.text.isEmpty) {
+                                alertFailField(context);
+                              } else {
+                                //
+                                // Caso input personalizado esteja ativado E controller esteja preenchido
+                                // então rode
+                                alertSucess(context);
+                                // falta atualizar
+                                await addRomeiro(
+                                    dbHelper: dbHelper,
+                                    nome: controllerNome.text,
+                                    idade: controllerIdade.text,
+                                    cidade: dropdownControllerCidade.text,
+                                    localDeAtendimento:
+                                        dropdownControllerLocalDeAtendimento
+                                            .text,
+                                    genero: dropdownControllerSexo.text,
+                                    patologia: controllerCondicaoFisica.text);
+                                // ignore: use_build_context_synchronously
+                                navigateAndRemoveUntil(
+                                    context, const PageInicio());
+                              }
+                            } else {
+                              // caso o  input personalizado esteja desativado
+                              // então rodee
+                              alertSucess(context);
+                              // falta atualizar
+                              await addRomeiro(
+                                  dbHelper: dbHelper,
+                                  nome: controllerNome.text,
+                                  idade: controllerIdade.text,
+                                  cidade: dropdownControllerCidade.text,
+                                  localDeAtendimento:
+                                      dropdownControllerLocalDeAtendimento.text,
+                                  genero: dropdownControllerSexo.text,
+                                  patologia:
+                                      dropdowncontrollerCondicaoFisica.text);
+                              // ignore: use_build_context_synchronously
+                              navigateAndRemoveUntil(
+                                  context, const PageInicio());
+                            }
                           } else {
                             alertFailField(context);
                           }

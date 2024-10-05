@@ -10,6 +10,7 @@ interface UserAttributes {
     cidade: string;
     localDeAtendimento: string;
     sexo: string;
+    patologia: string;
     createdAt?: Date;
     updatedAt?: Date;
 }
@@ -26,6 +27,7 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
     public cidade!: string;
     public localDeAtendimento!: string;
     public sexo!: string;
+    public patologia!: string;
     public createdAt?: Date;
     public updatedAt?: Date;
 }
@@ -58,6 +60,10 @@ export const Users = User.init({
         allowNull: false
     },
     sexo: {
+        type: DataTypes.TEXT,
+        allowNull: false
+    },
+    patologia: {
         type: DataTypes.TEXT,
         allowNull: false
     },

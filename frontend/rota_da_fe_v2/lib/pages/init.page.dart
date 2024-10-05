@@ -42,8 +42,9 @@ class _PageInitState extends State<PageInit> {
           child: Column(
             children: [
               header(
+                  disable_icon: true,
                   onTap: () {
-                    navigateAndRemoveUntil(context, const PageInicio());
+                    // navigateAndRemoveUntil(context, const PageInicio());
                   },
                   height: 80.0),
               Center(
