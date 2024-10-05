@@ -60,7 +60,7 @@ Widget buildTextField(
                         ),
                         contentPadding: const EdgeInsets.symmetric(
                             horizontal: 30, vertical: 15),
-                        labelText: "Digite o $label",
+                        labelText: "Digite $label",
                         border: OutlineInputBorder(
                           borderSide: const BorderSide(
                             color: Color.fromARGB(125, 66, 116, 67),

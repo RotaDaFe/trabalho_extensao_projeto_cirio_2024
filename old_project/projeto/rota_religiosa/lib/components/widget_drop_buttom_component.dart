@@ -243,7 +243,7 @@ class _WidgetDropComponentState extends State<WidgetDropComponent> {
                       enableSearch: true,
                       width: MediaQuery.of(context).size.width * 0.6,
                       menuStyle: const MenuStyle(
-                          backgroundColor: MaterialStatePropertyAll(
+                          backgroundColor: WidgetStatePropertyAll(
                               Color.fromRGBO(255, 255, 255, 0.985))),
                       dropdownMenuEntries: dropdownMenuEntries)
                 ],
