@@ -1,37 +1,39 @@
-import { Users, User } from '../models/User.model';
-import { CreationAttributes, DataTypes, where } from 'sequelize';
-import { Op } from 'sequelize';
+import { User } from '../models/User.model';
+import { CreationAttributes } from 'sequelize';
 
 
 class UserRepository {
     public async createUsers(users: CreationAttributes<User>[]): Promise<void> {
         try {
-            // pega o id referente ao usuario
             const idUser = users[0]['idUser'];
-            // apaga todos os dados referente aquele idUser
-            User.destroy({ where: { idUser: idUser } })
-            // criando array de usuarios
-            var usuarios = users.map(e => {
-                return {
-                    idUser: idUser,
-                    nome: e.nome,
-                    idade: e.idade,
-                    cidade: e.cidade,
-                    localDeAtendimento: e.localDeAtendimento,
-                    sexo: e.sexo,
-                    patologia: e.patologia,
-                    createdAt: e.createdAt,
-                    updatedAt: e.updatedAt
-                }
-            })
-            // adicionando usuarios em bash lote
-            User.bulkCreate(usuarios);
 
+            // Apaga todos os dados referentes àquele idUser
+            await User.destroy({ where: { idUser: idUser } });
+            console.log(`Dados para idUser ${idUser} deletados.`);
+
+            // Cria o array de usuários
+            const usuarios = users.map(e => ({
+                idUser: idUser,
+                nome: e.nome,
+                idade: e.idade,
+                cidade: e.cidade,
+                localDeAtendimento: e.localDeAtendimento,
+                sexo: e.sexo,
+                patologia: e.patologia,
+                createdAt: e.createdAt,
+                updatedAt: e.updatedAt
+            }));
+
+            // Adicionando usuários em lote
+            await User.bulkCreate(usuarios);
+            console.log(`Usuários para idUser ${idUser} criados com sucesso.`);
         } catch (error) {
+            console.error('Erro ao criar ou atualizar usuários e romeiros:', error);
             throw new Error('Erro ao criar ou atualizar usuários e romeiros: ' + error);
         }
     }
 }
+
 
 // Exporta uma instância única do UserRepository
 export default new UserRepository();
