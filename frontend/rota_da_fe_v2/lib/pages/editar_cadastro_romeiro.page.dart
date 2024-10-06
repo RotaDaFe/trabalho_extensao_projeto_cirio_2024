@@ -246,6 +246,7 @@ class _PageEditarCadastroRomeiroState extends State<PageEditarCadastroRomeiro> {
       onConfirmBtnTap: () async {
         // Deleta o romeiro
         await deleteRomeiro(dbHelper: dbHelper, id: widget.userId);
+        alertSucessDelete(context);
         Navigator.pop(context); // Fechar o QuickAlert
         navigateAndRemoveUntil(context, const PageInicio()); // Navegar de volta
       },
@@ -306,6 +307,7 @@ class _PageEditarCadastroRomeiroState extends State<PageEditarCadastroRomeiro> {
                                 controller: controllerIdade,
                                 width: largura),
                             buildDropdownButton(
+                                onChanged: () {},
                                 label: "Cidade",
                                 items: cidades, // Lista de opções
                                 controller: dropdownControllerCidade,
@@ -315,6 +317,7 @@ class _PageEditarCadastroRomeiroState extends State<PageEditarCadastroRomeiro> {
                                         : "Selecione",
                                 width: largura),
                             buildDropdownButton(
+                                onChanged: () {},
                                 label: "Sexo",
                                 items: sexo, // Lista de opções
                                 controller: dropdownControllerSexo,
@@ -324,6 +327,7 @@ class _PageEditarCadastroRomeiroState extends State<PageEditarCadastroRomeiro> {
                                         : "Selecione",
                                 width: largura),
                             buildDropdownButton(
+                                onChanged: () {},
                                 label: "Local de atendimento",
                                 items: locaDeAtendimento, // Lista de opções
                                 controller:
@@ -379,7 +383,7 @@ class _PageEditarCadastroRomeiroState extends State<PageEditarCadastroRomeiro> {
                                           'Selecione') {
                                     //
                                     // verifica se o input personalizado ta ativado
-                                    if (controllerCondicaoFisica.text.isEmpty) {
+                                    if (inputPersonalizado) {
                                       //
                                       // veerifica se  controller CondicaoFisica tem algo
                                       if (controllerCondicaoFisica

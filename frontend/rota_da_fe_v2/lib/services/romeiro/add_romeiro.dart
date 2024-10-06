@@ -10,7 +10,6 @@ Future addRomeiro({
   required patologia,
 }) async {
   // SqfliteHelper dbHelper = SqfliteHelper();
-
   Map<String, dynamic> newUser = {
     'nome': nome,
     'idade': idade,
@@ -18,7 +17,8 @@ Future addRomeiro({
     'localDeAtendimento': localDeAtendimento,
     'sexo': genero,
     'patologia': patologia,
-    // 'data_cadastro': DateTime.now().toIso8601String(),
+    'createdAt': DateTime.now().toIso8601String(),
+    'updatedAt': DateTime.now().toIso8601String()
   };
 
   int res = await dbHelper.insertUser(newUser);

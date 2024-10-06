@@ -18,6 +18,7 @@ Future updateRomeiro(
     'localDeAtendimento': localDeAtendimento,
     'sexo': genero,
     'patologia': patologia,
+    'updatedAt': DateTime.now().toIso8601String()
   };
 
   int res = await dbHelper.updateUser(id, user);

@@ -69,11 +69,11 @@ export const Users = User.init({
     },
     createdAt: {
         type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW
+        // defaultValue: DataTypes.NOW
     },
     updatedAt: {
         type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW
+        // defaultValue: DataTypes.NOW
     }
 }, {
     sequelize,

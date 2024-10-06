@@ -25,8 +25,10 @@ Future<int> exportDatabase({required SqfliteHelper dbHelper}) async {
       'localDeAtendimento': '',
       'sexo': '',
       'patologia': '',
+      'createdAt': '',
+      'updatedAt': '',
     };
-
+// createdAt
     for (var e in data) {
       usuario['nome'] = e['nome'];
       usuario['idade'] = e['idade'];
@@ -34,6 +36,8 @@ Future<int> exportDatabase({required SqfliteHelper dbHelper}) async {
       usuario['localDeAtendimento'] = e['localDeAtendimento'];
       usuario['sexo'] = e['sexo'];
       usuario['patologia'] = e['patologia'];
+      usuario['createdAt'] = e['createdAt'];
+      usuario['updatedAt'] = e['updatedAt'];
       dataQuery.add(usuario);
       usuario = {
         'idUser': user[0]['nome'],
@@ -43,6 +47,8 @@ Future<int> exportDatabase({required SqfliteHelper dbHelper}) async {
         'localDeAtendimento': '',
         'sexo': '',
         'patologia': '',
+        'createdAt': '',
+        'updatedAt': '',
       };
     }
     Map<String, dynamic> bodyRequest = {
@@ -86,6 +92,8 @@ Future exportDatabaseCopy({required SqfliteHelper dbHelper}) async {
       'localDeAtendimento': '',
       'sexo': '',
       'patologia': '',
+      'createdAt': '',
+      'updatedAt': '',
     };
 
     for (var e in data) {
@@ -95,6 +103,8 @@ Future exportDatabaseCopy({required SqfliteHelper dbHelper}) async {
       usuario['localDeAtendimento'] = e['localDeAtendimento'];
       usuario['sexo'] = e['sexo'];
       usuario['patologia'] = e['patologia'];
+      usuario['createdAt'] = e['createdAt'];
+      usuario['updatedAt'] = e['updatedAt'];
       dataQuery.add(usuario);
       usuario = {
         'idUser': user[0]['nome'],
@@ -104,6 +114,8 @@ Future exportDatabaseCopy({required SqfliteHelper dbHelper}) async {
         'localDeAtendimento': '',
         'sexo': '',
         'patologia': '',
+        'createdAt': '',
+        'updatedAt': '',
       };
     }
     Map<String, dynamic> bodyRequest = {

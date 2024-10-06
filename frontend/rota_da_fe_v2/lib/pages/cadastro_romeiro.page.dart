@@ -85,18 +85,21 @@ class _PageCadastroRomeiroState extends State<PageCadastroRomeiro> {
                         controller: controllerIdade,
                         width: largura),
                     buildDropdownButton(
+                        onChanged: () {},
                         label: "Cidade",
                         items: cidades, // Lista de opções
                         controller: dropdownControllerCidade,
                         initialValue: "Selecione",
                         width: largura),
                     buildDropdownButton(
+                        onChanged: () {},
                         label: "Sexo",
                         items: sexo, // Lista de opções
                         controller: dropdownControllerSexo,
                         initialValue: "Selecione",
                         width: largura),
                     buildDropdownButton(
+                        onChanged: () {},
                         label: "Local de atendimento",
                         items: locaDeAtendimento, // Lista de opções
                         controller: dropdownControllerLocalDeAtendimento,
@@ -137,7 +140,12 @@ class _PageCadastroRomeiroState extends State<PageCadastroRomeiro> {
                                   'Selecione' &&
                               dropdownControllerSexo.text != 'Selecione' &&
                               dropdowncontrollerCondicaoFisica.text !=
-                                  'Selecione') {
+                                  'Selecione' &&
+                              dropdowncontrollerCondicaoFisica
+                                  .text.isNotEmpty &&
+                              dropdownControllerLocalDeAtendimento
+                                  .text.isNotEmpty &&
+                              dropdownControllerSexo.text.isNotEmpty) {
                             //
                             // verifica se o input personalizado ta ativado
                             if (inputPersonalizado) {

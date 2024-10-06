@@ -7,7 +7,7 @@ Widget buildDropdownButton(
         controller, // Controlador para o valor selecionado
     required String initialValue, // Valor inicial
     required double width, // Largura do widget
-    Function? onChanged}) {
+    required Function onChanged}) {
   return SizedBox(
     width: width,
     child: Column(
@@ -66,7 +66,7 @@ Widget buildDropdownButton(
                         if (newValue != null) {
                           controller.text = newValue; // Atualiza o controlador
                         }
-                        onChanged != null ? onChanged() : () {};
+                        onChanged();
                       },
                       items:
                           items.map<DropdownMenuItem<String>>((String value) {

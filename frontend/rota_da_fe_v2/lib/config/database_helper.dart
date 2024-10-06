@@ -16,7 +16,7 @@ class SqfliteHelper {
   }
 
   Future<Database> _initDatabase() async {
-    String path = join(await getDatabasesPath(), 'app_database.db');
+    String path = join(await getDatabasesPath(), 'app_databaseV3.db');
     return await openDatabase(
       path,
       version: 1,
@@ -34,7 +34,9 @@ class SqfliteHelper {
         cidade TEXT,
         localDeAtendimento TEXT,
         sexo TEXT,
-        patologia TEXT
+        patologia TEXT,
+        createdAt DATETIME,
+        updatedAt DATETIME
       )
     ''');
 
