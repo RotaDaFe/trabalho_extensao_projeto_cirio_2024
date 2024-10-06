@@ -3,7 +3,7 @@ import 'package:rota_da_fe_v2/components/header.dart';
 import 'package:rota_da_fe_v2/components/section_logo_extensao.dart';
 import 'package:rota_da_fe_v2/components/text_section.dart';
 import 'package:rota_da_fe_v2/effects/slide_transition_page_remove.dart';
-import 'package:rota_da_fe_v2/pages/inicio.page.dart';
+import 'package:rota_da_fe_v2/view/inicio.page.dart';
 
 // ignore: constant_identifier_names
 const EQUIPE = """
@@ -20,10 +20,7 @@ Design
 Frontend
 - Matheus Barbosa de Andrade
 - Felipe Santos de Moura 
-- Iago Dantas Zorrilla e Silva 
 - Mateus da Cunha Nunes 
-- Jackeline Pereira Domingues
-- Tales Freire Rodrigues da Costa
 
 Backend
 - Pedro Gabriel Raiol Frade 
@@ -37,6 +34,10 @@ Documentação
 - Melize Rocha
 - Douglas Ronan Mendes de Oliveira
 
+Testers
+- Jackeline Pereira Domingues
+- Iago Dantas Zorrilla e Silva 
+- Tales Freire Rodrigues da Costa
 """;
 
 class PageSobreApp extends StatelessWidget {

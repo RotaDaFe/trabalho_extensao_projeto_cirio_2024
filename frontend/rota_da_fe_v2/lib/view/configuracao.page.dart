@@ -4,9 +4,9 @@ import 'package:rota_da_fe_v2/components/buttton_dropdow.dart';
 import 'package:rota_da_fe_v2/components/header.dart';
 import 'package:rota_da_fe_v2/effects/slide_transition_page.dart';
 import 'package:rota_da_fe_v2/effects/slide_transition_page_remove.dart';
-import 'package:rota_da_fe_v2/pages/edite_user.page.dart';
-import 'package:rota_da_fe_v2/pages/inicio.page.dart';
-import 'package:rota_da_fe_v2/config/database_helper.dart';
+import 'package:rota_da_fe_v2/view/editar_cadastro_user.page.dart';
+import 'package:rota_da_fe_v2/view/inicio.page.dart';
+import 'package:rota_da_fe_v2/repository/database_helper.dart';
 import 'package:rota_da_fe_v2/services/exportDB/fetch.dart'; // Para a função exportDatabase
 import 'package:flutter/services.dart'; // Para a função de copiar para a área de transferência
 

@@ -1,4 +1,5 @@
-import 'package:rota_da_fe_v2/config/database_helper.dart';
+import 'package:rota_da_fe_v2/models/user.model.dart';
+import 'package:rota_da_fe_v2/repository/database_helper.dart';
 
 Future<int> updateUser(
     {required SqfliteHelper dbHelper,
@@ -7,13 +8,13 @@ Future<int> updateUser(
     required posto,
     required senha}) async {
   // SqfliteHelper dbHelper = SqfliteHelper();
-  Map<String, dynamic> user = {
-    "nome": nome,
-    "posto": posto,
-    "senha": senha,
-  };
-  int res = await dbHelper.updateLogin(id, user);
+  UserModel user = UserModel(
+    nome: nome,
+    posto: posto,
+    senha: senha,
+  );
 
-  // Retorna uma lista de mapas simulando os dados do banco de dados
+  int res = await dbHelper.updateLogin(id, user.toMap());
+
   return res;
 }

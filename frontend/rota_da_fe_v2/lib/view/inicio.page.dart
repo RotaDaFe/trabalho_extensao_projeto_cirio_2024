@@ -5,11 +5,11 @@ import 'package:rota_da_fe_v2/components/header.dart';
 import 'package:rota_da_fe_v2/components/section_logo_extensao.dart';
 import 'package:rota_da_fe_v2/components/walpaper_background.dart';
 import 'package:rota_da_fe_v2/effects/slide_transition_page.dart';
-import 'package:rota_da_fe_v2/pages/cadastro_romeiro.page.dart';
-import 'package:rota_da_fe_v2/pages/configuracao.page.dart';
-import 'package:rota_da_fe_v2/pages/mostraCadastros.page.dart';
-import 'package:rota_da_fe_v2/pages/sobre.page.dart';
-import 'package:rota_da_fe_v2/config/database_helper.dart'; // Importa o helper do banco de dados
+import 'package:rota_da_fe_v2/view/cadastro_romeiro.page.dart';
+import 'package:rota_da_fe_v2/view/configuracao.page.dart';
+import 'package:rota_da_fe_v2/view/mostraCadastros.page.dart';
+import 'package:rota_da_fe_v2/view/sobre.page.dart';
+import 'package:rota_da_fe_v2/repository/database_helper.dart'; // Importa o helper do banco de dados
 
 class PageInicio extends StatefulWidget {
   const PageInicio({super.key});

@@ -1,6 +1,6 @@
 // Simulação de banco de dados fake
 
-import 'package:rota_da_fe_v2/config/database_helper.dart';
+import 'package:rota_da_fe_v2/repository/database_helper.dart';
 
 Future<Map<String, dynamic>> getRomeiroById(
     {required SqfliteHelper dbHelper, required userId}) async {

@@ -4,10 +4,10 @@ import 'package:rota_da_fe_v2/components/header.dart';
 import 'package:rota_da_fe_v2/components/item_user.dart';
 import 'package:rota_da_fe_v2/effects/slide_transition_page.dart';
 import 'package:rota_da_fe_v2/effects/slide_transition_page_remove.dart';
-import 'package:rota_da_fe_v2/pages/editar_cadastro_romeiro.page.dart';
-import 'package:rota_da_fe_v2/pages/inicio.page.dart';
+import 'package:rota_da_fe_v2/view/editar_cadastro_romeiro.page.dart';
+import 'package:rota_da_fe_v2/view/inicio.page.dart';
 import 'package:rota_da_fe_v2/services/romeiro/get_all_romeiro.dart';
-import 'package:rota_da_fe_v2/config/database_helper.dart';
+import 'package:rota_da_fe_v2/repository/database_helper.dart';
 import 'package:rota_da_fe_v2/services/user/get_all_login.dart'; // Importa o helper do banco de dados
 
 class PageMostraCadastros extends StatefulWidget {

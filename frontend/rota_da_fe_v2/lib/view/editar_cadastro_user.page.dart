@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:rota_da_fe_v2/components/build_textfield.dart';
 import 'package:rota_da_fe_v2/components/button_type_a.dart';
 import 'package:rota_da_fe_v2/components/header.dart';
-import 'package:rota_da_fe_v2/config/database_helper.dart';
+import 'package:rota_da_fe_v2/repository/database_helper.dart';
 import 'package:rota_da_fe_v2/effects/slide_transition_page_remove.dart';
 import 'package:rota_da_fe_v2/messageAlerts/alerts.dart';
-import 'package:rota_da_fe_v2/pages/inicio.page.dart';
+import 'package:rota_da_fe_v2/view/inicio.page.dart';
 import 'package:rota_da_fe_v2/services/user/get_all_login.dart';
 import 'package:rota_da_fe_v2/services/user/update_user.dart';
 

@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:rota_da_fe_v2/components/build_textfield.dart';
 import 'package:rota_da_fe_v2/components/button_type_a.dart';
-// PageCadastroRomeiro
-// String? selectedCity;
-// String? selectedLocation;
-// String? gender;
-
 import 'package:rota_da_fe_v2/components/header.dart';
-import 'package:rota_da_fe_v2/config/database_helper.dart';
+import 'package:rota_da_fe_v2/repository/database_helper.dart';
 import 'package:rota_da_fe_v2/effects/slide_transition_page_remove.dart';
 import 'package:rota_da_fe_v2/messageAlerts/alerts.dart';
 import 'package:rota_da_fe_v2/components/build_dropdown.dart';
-import 'package:rota_da_fe_v2/pages/inicio.page.dart';
+import 'package:rota_da_fe_v2/view/inicio.page.dart';
 import 'package:rota_da_fe_v2/services/cidades/data.dart';
 import 'package:rota_da_fe_v2/services/patologias/data.dart';
 import 'package:rota_da_fe_v2/services/romeiro/add_romeiro.dart';

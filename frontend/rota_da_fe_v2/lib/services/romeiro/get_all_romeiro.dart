@@ -1,4 +1,4 @@
-import 'package:rota_da_fe_v2/config/database_helper.dart';
+import 'package:rota_da_fe_v2/repository/database_helper.dart';
 
 Future<List> getAllRomeiros({required SqfliteHelper dbHelper}) async {
   // SqfliteHelper dbHelper = SqfliteHelper();

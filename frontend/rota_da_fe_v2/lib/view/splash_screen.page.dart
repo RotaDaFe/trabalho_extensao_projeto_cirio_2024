@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rota_da_fe_v2/components/section_logo_extensao.dart';
-import 'package:rota_da_fe_v2/config/database_helper.dart';
+import 'package:rota_da_fe_v2/repository/database_helper.dart';
 import 'package:rota_da_fe_v2/effects/slide_transition_page.dart';
-import 'package:rota_da_fe_v2/pages/inicio.page.dart';
-import 'package:rota_da_fe_v2/pages/init.page.dart';
+import 'package:rota_da_fe_v2/view/inicio.page.dart';
+import 'package:rota_da_fe_v2/view/init.page.dart';
 import 'package:rota_da_fe_v2/services/user/get_all_login.dart';
 import 'package:permission_handler/permission_handler.dart'; // Adicione este pacote
 
