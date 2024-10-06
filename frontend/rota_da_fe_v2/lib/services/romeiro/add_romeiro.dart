@@ -10,6 +10,7 @@ Future addRomeiro({
   required patologia,
 }) async {
   // SqfliteHelper dbHelper = SqfliteHelper();
+// createdAt
   Map<String, dynamic> newUser = {
     'nome': nome,
     'idade': idade,
