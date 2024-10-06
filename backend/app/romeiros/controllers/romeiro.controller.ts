@@ -7,6 +7,7 @@ const router = express.Router();
 
 
 router.post('/romeiros', async (req: Request, res: Response) => {
+    console.log("passss")
     try {
         const { romeiros, password } = req.body; // Recebe a lista de pacientes e a senha a partir do corpo da requisição
         // Obter a senha do arquivo .env
