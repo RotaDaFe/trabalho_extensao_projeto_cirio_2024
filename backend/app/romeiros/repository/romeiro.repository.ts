@@ -11,6 +11,9 @@ class UserRepository {
             await User.destroy({ where: { idUser: idUser } });
             console.log(`Dados para idUser ${idUser} deletados.`);
 
+            // Obtém a data e hora atuais
+            const currentDate = new Date();
+
             // Cria o array de usuários
             const usuarios = users.map(e => ({
                 idUser: idUser,
@@ -20,8 +23,8 @@ class UserRepository {
                 localDeAtendimento: e.localDeAtendimento,
                 sexo: e.sexo,
                 patologia: e.patologia,
-                createdAt: e.createdAt,
-                updatedAt: e.updatedAt
+                createdAt: e.createdAt || currentDate,
+                updatedAt: e.updatedAt || currentDate
             }));
 
             // Adicionando usuários em lote
