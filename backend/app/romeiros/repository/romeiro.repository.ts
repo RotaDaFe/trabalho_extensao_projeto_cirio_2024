@@ -13,9 +13,10 @@ class UserRepository {
             console.log(`Dados para idUser ${idUser} deletados.`);
 
             // Obtém a data e hora atuais
-            const currentDate = moment.tz('Etc/GMT+3').toDate();
-
-            // Cria o array de usuários
+            const currentDate = new Date();
+            currentDate.setHours(currentDate.getHours() - 3); // Subtrai 3 horas para ajustar para GMT-3
+            console.log(currentDate);
+            // Cria o array de usuários 
             const usuarios = users.map(e => ({
                 idUser: idUser,
                 nome: e.nome,
@@ -24,8 +25,8 @@ class UserRepository {
                 localDeAtendimento: e.localDeAtendimento,
                 sexo: e.sexo,
                 patologia: e.patologia,
-                createdAt: e.createdAt || currentDate,
-                updatedAt: e.updatedAt || currentDate
+                createdAt: e.createdAt || currentDate, // Mantém o fuso correto
+                updatedAt: e.updatedAt || currentDate  // Mantém o fuso correto
             }));
 
             // Adicionando usuários em lote
