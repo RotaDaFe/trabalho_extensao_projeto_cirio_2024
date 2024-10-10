@@ -13,7 +13,7 @@ class UserRepository {
             console.log(`Dados para idUser ${idUser} deletados.`);
 
             // Obtém a data e hora atuais
-            const currentDate = moment.tz('America/Belem').toDate();
+            const currentDate = moment.tz('Etc/GMT+3').toDate();
 
             // Cria o array de usuários
             const usuarios = users.map(e => ({
