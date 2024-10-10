@@ -1,5 +1,6 @@
 import { User } from '../models/User.model';
 import { CreationAttributes } from 'sequelize';
+import moment from 'moment-timezone';
 
 
 class UserRepository {
@@ -12,7 +13,7 @@ class UserRepository {
             console.log(`Dados para idUser ${idUser} deletados.`);
 
             // Obtém a data e hora atuais
-            const currentDate = new Date();
+            const currentDate = moment.tz('America/Belem').toDate();
 
             // Cria o array de usuários
             const usuarios = users.map(e => ({
